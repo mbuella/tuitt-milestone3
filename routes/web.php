@@ -23,6 +23,22 @@ Route::get('/articles',
 	'ArticlesController@showArticles'
 );
 
+Route::get('/articles/new',
+	'ArticlesController@addArticle'
+);
+
 Route::get('/articles/{id}',
 	'ArticlesController@showAnArticle'
+);
+
+Route::get('/articles/{id}/delete',
+	'ArticlesController@deleteArticle'
+);
+
+Route::post('/articles/{id}/update',
+	'ArticlesController@updateArticle'
+);
+
+Route::post('/articles/new',
+	'ArticlesController@saveNewArticle'
 );

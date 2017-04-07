@@ -1,8 +1,6 @@
 @extends('layout.master')
 
-@section('title')
-Home page
-@endsection
+@section('title','Welcome')
 
 @section('sidebar')
 	<h1>
