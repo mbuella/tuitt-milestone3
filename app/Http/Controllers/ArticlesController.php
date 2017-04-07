@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use \App\Article;
+use Session;
 
 class ArticlesController extends Controller
 {
@@ -32,7 +33,7 @@ class ArticlesController extends Controller
         $newArticle->save();
 
         //set message here
-
+        Session::flash('message','Article has been successfully added.');
         //redirect to articles
         return redirect('articles');
     }
@@ -43,6 +44,7 @@ class ArticlesController extends Controller
         $article->delete();
 
         //set message here
+        Session::flash('message','Article has been successfully deleted.');
 
         //redirect to articles
         return redirect('articles');
@@ -56,6 +58,7 @@ class ArticlesController extends Controller
         $article->save();
 
         //set message here
+        Session::flash('message','Article has been successfully updated.');
 
         //redirect to articles
         return redirect('articles');

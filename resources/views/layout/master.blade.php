@@ -19,7 +19,22 @@
 </head>
 <body>
 
+
 @include('layout.header')
+
+@if(Session::has('message'))
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="alert alert-success alert-dismissable">
+		  			<a href="#" class="close"
+		  			   data-dismiss="alert" aria-label="close">&times;</a>
+					{{ Session::get('message') }}
+				</div>				
+			</div>
+		</div>
+	</div>
+@endif
 
 @yield('content')
 
