@@ -9,7 +9,7 @@
 		<div class="row">
 			<h2>Halina't magbasa ng mga kwentong sariling atin.</h2> 
 
-			<a class="btn btn-primary btn-lg" href="read">Tara na!</a>
+			<a class="btn btn-primary btn-lg" href="stories">Tara na!</a>
 
 			<div class="arrow-scroll">
 				<a class="btn btn-link" id="home-next">
@@ -31,7 +31,7 @@
 					<a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
 						<div class="panel-heading">
 							<h4 class="panel-title">
-								<h3>Kasaysayan</h3>
+								<h3><strong>K</strong>asaysayan</h3>
 							</h4>
 						</div>
 					</a>
@@ -45,7 +45,7 @@
 					<a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
 						<div class="panel-heading">
 							<h4 class="panel-title">
-								<h3>Wika</h3>
+								<h3><strong>W</strong>ika</h3>
 							</h4>
 						</div>
 					</a>
@@ -59,7 +59,7 @@
 					<a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
 						<div class="panel-heading">
 							<h4 class="panel-title">
-								<h3>Nakakapagpalibang</h3>
+								<h3><strong>N</strong>akakapagpalibang</h3>
 							</h4>
 						</div>
 					</a>
@@ -73,7 +73,7 @@
 					<a data-toggle="collapse" data-parent="#accordion" href="#collapse4">			
 						<div class="panel-heading">
 							<h4 class="panel-title">
-								<h3>Tagalog</h3>
+								<h3><strong>T</strong>agalog</h3>
 							</h4>
 						</div>
 					</a>
@@ -87,7 +87,7 @@
 					<a data-toggle="collapse" data-parent="#accordion" href="#collapse5">			
 						<div class="panel-heading">
 							<h4 class="panel-title">
-								<h3>Ugnayan</h3>							
+								<h3><strong>U</strong>gnayan</h3>							
 							</h4>
 						</div>
 					</a>

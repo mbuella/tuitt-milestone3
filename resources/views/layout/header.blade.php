@@ -21,11 +21,11 @@
       <div class="collapse navbar-collapse" id="main-nav">
         <ul class="nav navbar-nav">
           <li class="pull-left">
-            <a href="#">
+            <a href="/#">
               <span class="fa fa-home"></span>              
             </a>
           </li>
-          <li class="pull-left"><a href="read">Stories</a></li>
+          <li class="pull-left"><a href="stories">Stories</a></li>
           <li class="pull-left"><a href="authors">Authors</a></li>
 
           <!-- Centered logo image -->
@@ -49,7 +49,7 @@
             //echo $user_dropdn;
           ?>
           <li class="pull-right">
-            <a href="#about">About</a>
+            <a href="/#about">About</a>
           </li>
         </ul>
       </div><!-- /.navbar-collapse -->

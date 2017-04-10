@@ -3,6 +3,9 @@
 <head>
 	<title>@yield('title')</title>
 
+	<!-- Icon -->
+	<link rel="shortcut icon" type="image/x-icon" href="assets/images/kwntu.ico" />
+
 	<!-- FONTS -->
 
 	<!-- Raleway font -->
