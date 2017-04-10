@@ -2,13 +2,12 @@
     "name": "mbuella/kwntu",
     "description": "kwntu: The Ultimate Online Pinoy Book Webapp",
     "keywords": ["kwntu", "stories","philippines","pinoy"],
-    "homepage": "kwntu.herokuapp.com",
+    "homepage": "https://kwntu.herokuapp.com",
     "license": "MIT",
     "authors": [
         {
             "name": "Marlon B. Buella",
             "email": "marlon.b.buella@gmail.com",
-            "homepage": "",
             "role": "Developer"
         }
     ],

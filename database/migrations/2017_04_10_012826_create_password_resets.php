@@ -15,7 +15,7 @@ class CreatePasswordResets extends Migration
     {
         Schema::create('password_resets', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
+            $table->timestamps(); 
         });
     }
 

@@ -44,35 +44,18 @@
               <span class="fa fa-search"></span>          
             </button>
           </li>
-          <?php
-            //Display user(signin or profile) popover 
-            //echo $user_dropdn;
-          ?>
+          @if (Auth::check())
+            @include('layout.header.profile')
+          @else              
+            <li class="pull-right">
+              <a href="/login">Login</a>
+            </li>
+          @endif
           <li class="pull-right">
-            <a href="/#about">About</a>
+            <a href="/about">About</a>
           </li>
         </ul>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
   </nav>
-
-    <div id="popover-content" class="hide">
-        <div class="panel">
-          <div class="panel-body">
-            Logo and Name
-          </div>
-      <div class="list-group">
-        <a href="#" class="list-group-item">
-          My Profile
-        </a>
-        <a href="#" class="list-group-item">
-          My Stories
-        </a>
-        <div class="separator">A</div>
-      </div>
-      <div class="panel-footer">
-        Log out
-      </div>
-        </div>
-    </div>    
 </header>

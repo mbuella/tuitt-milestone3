@@ -13,8 +13,21 @@
 
 /*** INDEX PAGE ***/
 Route::get('/', function () {
-    return view('home');
+    return view('welcome');
 });
+
+/*** LOGOUT ***/
+Route::get('/logout',function(){
+	Auth::logout();
+	return redirect('/');
+});
+
+
+/*** About page ***/
+Route::get('/about',function(){
+	return view('about');
+});
+
 
 /*** Stories Routes ***/
 Route::get('/stories',
@@ -26,3 +39,10 @@ Route::get('/stories',
 Route::get('/authors',
 	'AuthorsController@index'
 );
+
+
+Auth::routes();
+
+
+/*** Member Dashboard ***/
+Route::get('/home', 'HomeController@index');

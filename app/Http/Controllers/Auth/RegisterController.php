@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Member;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -47,11 +48,21 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|min:6|confirmed',
-        ]);
+        return Validator::make($data,
+            [
+                'member_fname' => 'required|max:255',
+                'member_lname' => 'required|max:255',
+                'user_email' => 'email|max:255|unique:users',
+                //'member_dbirth' => 'date',
+                'member_gender' => 'required',
+                'user_name' => 'required|max:20|unique:users',
+                'user_pword' => 'required|min:8|confirmed',
+            ],
+            [
+                'confirmed' => 'Your passwords do not match.',
+                'member_dbirth.date' => 'Your date of birth is invalid.'
+            ]
+        );
     }
 
     /**
@@ -62,10 +73,28 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
+        $member = new Member([      
+            'member_fname' => $data['member_fname'], 
+            'member_lname' => $data['member_lname'], 
+            'member_addr' => $data['member_addr'], 
+            'member_dbirth' => $data['member_dbirth'], 
+            'member_gender' => $data['member_gender']
         ]);
+
+        //add new user record
+        $user = User::create([
+            'user_name' => $data['user_name'],
+            'user_email' => $data['user_email'],
+            'user_pword' => bcrypt($data['user_pword']),
+        ]);
+
+
+        //add member record
+        $user->member()->save($member);
+
+        //dd($user);
+
+        // IMPORTANT!!! Always return the User instance.
+        return $user;
     }
 }
