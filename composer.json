@@ -1,8 +1,16 @@
 {
-    "name": "laravel/laravel",
-    "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "name": "mbuella/kwntu",
+    "description": "kwntu: The Ultimate Online Pinoy Book Webapp",
+    "keywords": ["kwntu", "stories","philippines","pinoy"],
+    "homepage": "https://kwntu.herokuapp.com",
     "license": "MIT",
+    "authors": [
+        {
+            "name": "Marlon B. Buella",
+            "email": "marlon.b.buella@gmail.com",
+            "role": "Developer"
+        }
+    ],
     "type": "project",
     "require": {
         "php": ">=5.6.4",

@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App;
 
 class User extends Authenticatable
 {
@@ -15,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'user_name', 'user_email', 'user_pword',
     ];
 
     /**
@@ -26,4 +27,17 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function member() {
+        return $this->hasOne('App\Member');
+    }
+
+    /***
+        We need to rename getAuthPassword()
+        ->user_pword to user_pword, the 
+        actual name in the USER table 
+    ***/
+    public function getAuthPassword() {
+        return $this->user_pword;
+    }
 }

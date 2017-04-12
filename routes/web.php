@@ -11,34 +11,38 @@
 |
 */
 
+/*** INDEX PAGE ***/
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/home', function () {
-    return view('home');
+/*** LOGOUT ***/
+Route::get('/logout',function(){
+	Auth::logout();
+	return redirect('/');
 });
 
-Route::get('/articles',
-	'ArticlesController@showArticles'
+
+/*** About page ***/
+Route::get('/about',function(){
+	return view('about');
+});
+
+
+/*** Stories Routes ***/
+Route::get('/stories',
+	'StoriesController@index'
 );
 
-Route::get('/articles/new',
-	'ArticlesController@addArticle'
+
+/*** Authors Routes ***/
+Route::get('/authors',
+	'AuthorsController@index'
 );
 
-Route::get('/articles/{id}',
-	'ArticlesController@showAnArticle'
-);
 
-Route::get('/articles/{id}/delete',
-	'ArticlesController@deleteArticle'
-);
+Auth::routes();
 
-Route::post('/articles/{id}/update',
-	'ArticlesController@updateArticle'
-);
 
-Route::post('/articles/new',
-	'ArticlesController@saveNewArticle'
-);
+/*** Member Dashboard ***/
+Route::get('/home', 'HomeController@index');
