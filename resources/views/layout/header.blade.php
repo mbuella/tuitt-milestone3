@@ -13,7 +13,7 @@
             <span class="icon-bar"></span>
         </button>
         <span class="navbar-brand logo-img visible-xs">           
-          <img src="assets/images/kwntu.png" alt="kwntu">
+          <img src="{{ asset('assets/images/kwntu.png') }}" alt="kwntu">
         </span>
       </div>
 
@@ -25,12 +25,12 @@
               <span class="fa fa-home"></span>              
             </a>
           </li>
-          <li class="pull-left"><a href="stories">Stories</a></li>
-          <li class="pull-left"><a href="authors">Authors</a></li>
+          <li class="pull-left"><a href="/stories">Stories</a></li>
+          <li class="pull-left"><a href="/authors">Authors</a></li>
 
           <!-- Centered logo image -->
           <li class="hidden-xs logo-img">
-            <img src="assets/images/kwntu.png" alt="kwntu">
+            <img src="{{ asset('assets/images/kwntu.png') }}" alt="kwntu">
           </li>
 
           <!-- Items on the right (first entry is last to display) -->

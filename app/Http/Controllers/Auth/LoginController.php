@@ -37,7 +37,7 @@ class LoginController extends Controller
         $this->middleware('guest', ['except' => 'logout']);
     }
 
-    //we need to use the codename as the username
+    //we need to use user_name as the username
     public function username()
     {
         return 'user_name';

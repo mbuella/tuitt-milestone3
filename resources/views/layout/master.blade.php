@@ -10,28 +10,11 @@
 
 	<!-- Raleway font -->
 	{{ HTML::style('https://fonts.googleapis.com/css?family=Raleway') }}
-
 	<!-- Lora font -->
 	{{ HTML::style('https://fonts.googleapis.com/css?family=Lora') }}
 
-	<!-- Font Awesome! -->
-	<link rel="stylesheet" type="text/css" href="vendors/fontawesome/styles/font-awesome.min.css">
-
-	<!-- LIBRARIES -->
-	<!-- Bootstrap CSS -->
-	{{ HTML::style('vendors/bootstrap/styles/bootstrap.min.css') }}
-	<!-- jQuery -->
-	{{ HTML::script('vendors/jquery/scripts/jquery.min.js') }}
-	<!-- Bootstrap JS -->
-	{{ HTML::script('vendors/bootstrap/scripts/bootstrap.min.js') }}
-
-	<!-- CUSTOM -->
-	<!-- Customized Bootsrap Theme -->
-	{{ HTML::style('vendors/bootstrap/styles/bootstrap.custom.min.css') }}
 	<!-- CSS -->
-	{{ HTML::style('assets/styles/main.css') }}
-	<!-- JS -->
-	{{ HTML::script('assets/scripts/main.js') }}
+	{{ HTML::style('assets/css/main.css') }}	
 </head>
 <body>
 
@@ -56,5 +39,9 @@
 
 @include('layout.footer')
 
+
+	<!-- JS -->
+	{{ HTML::script('assets/js/main.js') }}
+	
 </body>
 </html>

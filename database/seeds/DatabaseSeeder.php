@@ -11,6 +11,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
+    	$faker = Faker\Factory::create();
+    	// generate authors
+		//$authors = factory(App\Author::class, 5)->create();
+    	// generate stories
+		//$stories = factory(App\Story::class, 50)->create();
+        // generate chapters
+		$chapters = factory(App\Chapter::class, 5)->create();
     }
 }

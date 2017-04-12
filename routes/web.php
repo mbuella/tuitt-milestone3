@@ -30,10 +30,28 @@ Route::get('/about',function(){
 
 
 /*** Stories Routes ***/
-Route::get('/stories',
+Route::get('/stories/',
 	'StoriesController@index'
 );
 
+Route::get('/stories/{genre_name}',
+	'StoriesController@getStories'
+);
+
+
+/*** Story Page Routes ***/
+Route::get('/story/{story_slug}/',
+	'StoryController@index'
+);
+
+//also catch urls with no slugs but chapter already indicated
+/*Route::get('/story/{story}/chapter/{chapter}',
+	'StoryController@getChapter'
+);
+*/
+Route::get('/story/{story_slug}/chapter/{chapter}',
+	'StoryController@index'
+);
 
 /*** Authors Routes ***/
 Route::get('/authors',

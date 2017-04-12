@@ -4,6 +4,18 @@
 		"selected_items":
 		[
 			[
+				"uc",
+				"ucwords"
+			],
+			[
+				"user_",
+				"user_name"
+			],
+			[
+				"A",
+				"Auth"
+			],
+			[
 				"text",
 				"textarea	Tag"
 			],
@@ -300,10 +312,6 @@
 				"aSqrt"
 			],
 			[
-				"A",
-				"Average"
-			],
-			[
 				"grade",
 				"gradeCount"
 			],
@@ -451,7 +459,15 @@
 			"file": "/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/composer.json",
 			"settings":
 			{
-				"buffer_size": 1578,
+				"buffer_size": 1603,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/vendor/barryvdh/laravel-debugbar/config/debugbar.php",
+			"settings":
+			{
+				"buffer_size": 6803,
 				"line_ending": "Unix"
 			}
 		},
@@ -459,33 +475,15 @@
 			"file": "/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/routes/web.php",
 			"settings":
 			{
-				"buffer_size": 903,
+				"buffer_size": 976,
 				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/app/Http/Controllers/Auth/LoginController.php",
-			"settings":
-			{
-				"buffer_size": 1071,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"contents": "Searching 6069 files for \"username()\"\n\nC:\\Users\\Tuitt Batch 4\\Documents\\mbuella\\laravel\\kwntu\\app\\Http\\Controllers\\Auth\\LoginController.php:\n   39  \n   40      //we need to use the codename as the username\n   41:     public function username()\n   42      {\n   43          return 'user_name';\n\nC:\\Users\\Tuitt Batch 4\\Documents\\mbuella\\laravel\\kwntu\\vendor\\fzaninotto\\faker\\src\\Faker\\Provider\\ar_JO\\Internet.php:\n   39       * @example 'ahmad.abbadi'\n   40       */\n   41:     public function userName()\n   42      {\n   43          $format = static::randomElement(static::$userNameFormats);\n\nC:\\Users\\Tuitt Batch 4\\Documents\\mbuella\\laravel\\kwntu\\vendor\\fzaninotto\\faker\\src\\Faker\\Provider\\ar_SA\\Internet.php:\n   39       * @example 'ahmad.abbadi'\n   40       */\n   41:     public function userName()\n   42      {\n   43          $format = static::randomElement(static::$userNameFormats);\n\nC:\\Users\\Tuitt Batch 4\\Documents\\mbuella\\laravel\\kwntu\\vendor\\fzaninotto\\faker\\src\\Faker\\Provider\\fa_IR\\Internet.php:\n   86       * @example 'ali.rezaei'\n   87       */\n   88:     public function userName()\n   89      {\n   90          $format = static::randomElement(static::$userNameFormats);\n\nC:\\Users\\Tuitt Batch 4\\Documents\\mbuella\\laravel\\kwntu\\vendor\\fzaninotto\\faker\\src\\Faker\\Provider\\Internet.php:\n   46      final public function safeEmail()\n   47      {\n   48:         return preg_replace('/\\s/u', '', $this->userName() . '@' . static::safeEmailDomain());\n   49      }\n   50  \n   ..\n   54      public function freeEmail()\n   55      {\n   56:         return preg_replace('/\\s/u', '', $this->userName() . '@' . static::freeEmailDomain());\n   57      }\n   58  \n   ..\n   62      public function companyEmail()\n   63      {\n   64:         return preg_replace('/\\s/u', '', $this->userName() . '@' . $this->domainName());\n   65      }\n   66  \n   ..\n   89       * @example 'jdoe'\n   90       */\n   91:     public function userName()\n   92      {\n   93          $format = static::randomElement(static::$userNameFormats);\n\nC:\\Users\\Tuitt Batch 4\\Documents\\mbuella\\laravel\\kwntu\\vendor\\fzaninotto\\faker\\src\\Faker\\Provider\\ja_JP\\Internet.php:\n   41       * @example 'suzuki.taro'\n   42       */\n   43:     public function userName()\n   44      {\n   45          $format = static::randomElement(static::$userNameFormats);\n\nC:\\Users\\Tuitt Batch 4\\Documents\\mbuella\\laravel\\kwntu\\vendor\\fzaninotto\\faker\\src\\Faker\\Provider\\ko_KR\\Internet.php:\n   70       * @example 'gunwoo.gang'\n   71       */\n   72:     public function userName()\n   73      {\n   74          $format = static::randomElement(static::$userNameFormats);\n\nC:\\Users\\Tuitt Batch 4\\Documents\\mbuella\\laravel\\kwntu\\vendor\\fzaninotto\\faker\\src\\Faker\\Provider\\zh_TW\\Internet.php:\n    5  class Internet extends \\Faker\\Provider\\Internet\n    6  {\n    7:     public function userName()\n    8      {\n    9:         return \\Faker\\Factory::create('en_US')->userName();\n   10      }\n   11  \n\nC:\\Users\\Tuitt Batch 4\\Documents\\mbuella\\laravel\\kwntu\\vendor\\fzaninotto\\faker\\test\\Faker\\Provider\\InternetTest.php:\n   60          $this->loadLocalProviders($locale);\n   61          $pattern = '/^[A-Za-z0-9._]+$/';\n   62:         $username = $this->faker->username();\n   63          $this->assertRegExp($pattern, $username);\n   64      }\n\nC:\\Users\\Tuitt Batch 4\\Documents\\mbuella\\laravel\\kwntu\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Auth\\AuthenticatesUsers.php:\n   60      {\n   61          $this->validate($request, [\n   62:             $this->username() => 'required', 'password' => 'required',\n   63          ]);\n   64      }\n   ..\n   85      protected function credentials(Request $request)\n   86      {\n   87:         return $request->only($this->username(), 'password');\n   88      }\n   89  \n   ..\n  124      protected function sendFailedLoginResponse(Request $request)\n  125      {\n  126:         $errors = [$this->username() => trans('auth.failed')];\n  127  \n  128          if ($request->expectsJson()) {\n  ...\n  131  \n  132          return redirect()->back()\n  133:             ->withInput($request->only($this->username(), 'remember'))\n  134              ->withErrors($errors);\n  135      }\n  ...\n  140       * @return string\n  141       */\n  142:     public function username()\n  143      {\n  144          return 'email';\n\nC:\\Users\\Tuitt Batch 4\\Documents\\mbuella\\laravel\\kwntu\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Auth\\ThrottlesLogins.php:\n   49          $message = Lang::get('auth.throttle', ['seconds' => $seconds]);\n   50  \n   51:         $errors = [$this->username() => $message];\n   52  \n   53          if ($request->expectsJson()) {\n   ..\n   56  \n   57          return redirect()->back()\n   58:             ->withInput($request->only($this->username(), 'remember'))\n   59              ->withErrors($errors);\n   60      }\n   ..\n   90      protected function throttleKey(Request $request)\n   91      {\n   92:         return Str::lower($request->input($this->username())).'|'.$request->ip();\n   93      }\n   94  \n\nC:\\Users\\Tuitt Batch 4\\Documents\\mbuella\\laravel\\kwntu\\vendor\\league\\flysystem\\src\\Adapter\\AbstractFtpAdapter.php:\n  222       * @return string username\n  223       */\n  224:     public function getUsername()\n  225      {\n  226          $username = $this->safeStorage->retrieveSafely('username');\n\nC:\\Users\\Tuitt Batch 4\\Documents\\mbuella\\laravel\\kwntu\\vendor\\league\\flysystem\\src\\Adapter\\Ftp.php:\n  177          $isLoggedIn = ftp_login(\n  178              $this->connection,\n  179:             $this->getUsername(),\n  180              $this->getPassword()\n  181          );\n  ...\n  186              throw new RuntimeException(\n  187                  'Could not login with connection: ' . $this->getHost() . '::' . $this->getPort(\n  188:                 ) . ', username: ' . $this->getUsername()\n  189              );\n  190          }\n\nC:\\Users\\Tuitt Batch 4\\Documents\\mbuella\\laravel\\kwntu\\vendor\\monolog\\monolog\\tests\\Monolog\\Handler\\Slack\\SlackRecordTest.php:\n  110      }\n  111  \n  112:     public function testAddsCustomUsername()\n  113      {\n  114          $username = 'Monolog bot';\n\nC:\\Users\\Tuitt Batch 4\\Documents\\mbuella\\laravel\\kwntu\\vendor\\swiftmailer\\swiftmailer\\doc\\sending.rst:\n  197  \n  198  Some servers require authentication. You can provide a username and password\n  199: with ``setUsername()`` and ``setPassword()`` methods.\n  200  \n  201  To use a username and password with the SMTP Transport:\n  ...\n  203  * Create the Transport with ``Swift_SmtpTransport::newInstance()``.\n  204  \n  205: * Call the ``setUsername()`` and ``setPassword()`` methods on the Transport.\n  206  \n  207  Your username and password will be used to authenticate upon first connect\n  ...\n  221          require_once 'lib/swift_required.php';\n  222  \n  223:         // Create the Transport the call setUsername() and setPassword()\n  224          $transport = Swift_SmtpTransport::newInstance('smtp.example.org', 25)\n  225            ->setUsername('username')\n\nC:\\Users\\Tuitt Batch 4\\Documents\\mbuella\\laravel\\kwntu\\vendor\\swiftmailer\\swiftmailer\\lib\\classes\\Swift\\SmtpTransport.php:\n   15   *\n   16   * @method Swift_SmtpTransport setUsername(string $username) Set the username to authenticate with.\n   17:  * @method string              getUsername()                 Get the username to authenticate with.\n   18   * @method Swift_SmtpTransport setPassword(string $password) Set the password to authenticate with.\n   19   * @method string              getPassword()                 Get the password to authenticate with.\n\nC:\\Users\\Tuitt Batch 4\\Documents\\mbuella\\laravel\\kwntu\\vendor\\swiftmailer\\swiftmailer\\lib\\classes\\Swift\\Transport\\Esmtp\\AuthHandler.php:\n   96       * @return string\n   97       */\n   98:     public function getUsername()\n   99      {\n  100          return $this->_username;\n\nC:\\Users\\Tuitt Batch 4\\Documents\\mbuella\\laravel\\kwntu\\vendor\\swiftmailer\\swiftmailer\\tests\\unit\\Swift\\Transport\\Esmtp\\Auth\\NTLMAuthenticatorTest.php:\n   83      }\n   84  \n   85:     public function testGetDomainAndUsername()\n   86      {\n   87          $username = \"DOMAIN\\user\";\n\nC:\\Users\\Tuitt Batch 4\\Documents\\mbuella\\laravel\\kwntu\\vendor\\swiftmailer\\swiftmailer\\tests\\unit\\Swift\\Transport\\Esmtp\\AuthHandlerTest.php:\n   20          $auth = $this->_createHandler(array());\n   21          $auth->setUsername('jack');\n   22:         $this->assertEquals('jack', $auth->getUsername());\n   23      }\n   24  \n   ..\n   42          $mixins = $auth->exposeMixinMethods();\n   43          $this->assertTrue(in_array('getUsername', $mixins),\n   44:             '%s: getUsername() should be accessible via mixin'\n   45              );\n   46          $this->assertTrue(in_array('setUsername', $mixins),\n   47:             '%s: setUsername() should be accessible via mixin'\n   48              );\n   49          $this->assertTrue(in_array('getPassword', $mixins),\n\n34 matches across 19 files\n\n\nSearching 6069 files for \"These credentials do not match our records.\"\n\nC:\\Users\\Tuitt Batch 4\\Documents\\mbuella\\laravel\\kwntu\\resources\\lang\\en\\auth.php:\n   14      */\n   15  \n   16:     'failed' => 'These credentials do not match our records.',\n   17      'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',\n   18  \n\n1 match in 1 file\n",
-			"settings":
-			{
-				"buffer_size": 9224,
-				"line_ending": "Windows",
-				"name": "Find Results",
-				"scratch": true
 			}
 		},
 		{
 			"file": "/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/app/Http/Controllers/HomeController.php",
 			"settings":
 			{
-				"buffer_size": 519,
+				"buffer_size": 566,
 				"line_ending": "Windows"
 			}
 		},
@@ -493,7 +491,23 @@
 			"file": "/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/resources/views/auth/login.blade.php",
 			"settings":
 			{
-				"buffer_size": 3131,
+				"buffer_size": 3326,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/resources/views/auth/passwords/email.blade.php",
+			"settings":
+			{
+				"buffer_size": 1936,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/resources/views/auth/passwords/reset.blade.php",
+			"settings":
+			{
+				"buffer_size": 3561,
 				"line_ending": "Windows"
 			}
 		},
@@ -506,18 +520,10 @@
 			}
 		},
 		{
-			"file": "/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/app/Http/Controllers/AuthorsController.php",
-			"settings":
-			{
-				"buffer_size": 175,
-				"line_ending": "Windows"
-			}
-		},
-		{
 			"file": "/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/resources/views/home.blade.php",
 			"settings":
 			{
-				"buffer_size": 507,
+				"buffer_size": 540,
 				"line_ending": "Windows"
 			}
 		},
@@ -538,6 +544,81 @@
 			}
 		},
 		{
+			"contents": "<main class=\"container\" id=\"genres\">\n	<div class=\"row\">\n		<div class=\"col-md-6 col-sm-6 col-xs-12 stories-right\">\n			<div class=\"col-md-12 col-sm-12 col-xs-12\">\n				<span class=\"genre-box-lg\">\n					 <div class=\"panel text-center tile-1\">\n					 	<h2>Genres</h2>\n					 </div>\n				</span>\n			</div>\n			<div class=\"col-md-6 col-sm-6 col-xs-12\">\n				<a href=\"{{ url('/stories/classics') }}\" class=\"genre-box-sm\">\n					 <div class=\"panel tile-3\">\n					 	<h4>Classics</h4>\n					 </div>\n				</a>\n				<a href=\"{{ url('/stories/science-fiction') }}\" class=\"genre-box-sm\">\n					 <div class=\"panel tile-3\">\n					 	<h4>Science Fiction</h4>\n					 </div>\n				</a>\n			</div>\n			<div class=\"col-md-6 col-sm-6 col-xs-12\">\n				<a href=\"{{ url('/stories/humor') }}\" class=\"genre-box-sm\">\n					 <div class=\"panel tile-1\">\n					 	<h4>Humor</h4>\n					 </div>\n				</a>\n				<a href=\"{{ url('/stories/horror') }}\" class=\"genre-box-sm\">\n					 <div class=\"panel tile-5\">\n					 	<h4>Horror</h4>\n					 </div>\n				</a>\n			</div>\n		</div>\n		<div class=\"col-md-6 col-sm-6 col-xs-12 stories-right\">\n			<div class=\"col-md-6 col-sm-6 col-xs-12\">\n				<a href=\"{{ url('/stories/fantasy') }}\" class=\"genre-box-sm\">\n					 <div class=\"panel tile-3\">\n					 	<h4>Fantasy</h4>\n					 </div>\n				</a>\n				<a href=\"{{ url('/stories/history') }}\" class=\"genre-box-sm\">\n					 <div class=\"panel tile-4\">\n					 	<h4>History</h4>\n					 </div>\n				</a>\n			</div>\n			<div class=\"col-md-6 col-sm-6 col-xs-12\">\n				<a href=\"{{ url('/stories/poetry') }}\" class=\"genre-box-sm\">\n					 <div class=\"panel tile-5\">\n					 	<h4>Poetry</h4>\n					 </div>\n				</a>\n				<a href=\"{{ url('/stories/short-story') }}\" class=\"genre-box-sm\">\n					 <div class=\"panel tile-2\">\n					 	<h4>Short Story</h4>\n					 </div>\n				</a>\n			</div>\n			<div class=\"col-md-12 col-sm-12 col-xs-12\">\n				<a href=\"{{ url('/stories/romance') }}\" class=\"genre-box-lg\">\n					 <div class=\"panel tile-a\">\n					 	<h4>Romance</h4>\n					 </div>\n				</a>\n			</div>\n		</div>\n	</div>		\n</main>",
+			"file": "/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/resources/views/genres/genres.blade.php",
+			"file_size": 2058,
+			"file_write_time": 131364561116636731,
+			"settings":
+			{
+				"buffer_size": 1989,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/app/Http/Controllers/StoriesController.php",
+			"settings":
+			{
+				"buffer_size": 703,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/resources/views/stories/card.blade.php",
+			"settings":
+			{
+				"buffer_size": 655,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/resources/assets/css/app.css",
+			"settings":
+			{
+				"buffer_size": 4702,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/public/assets/css/main.css",
+			"settings":
+			{
+				"buffer_size": 232068,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/app/Author.php",
+			"settings":
+			{
+				"buffer_size": 183,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/resources/views/genres.blade.php",
+			"settings":
+			{
+				"buffer_size": 2087,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/resources/views/stories.blade.php",
+			"settings":
+			{
+				"buffer_size": 1048,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/app/Story.php",
+			"settings":
+			{
+				"buffer_size": 183,
+				"line_ending": "Unix"
+			}
+		},
+		{
 			"file": "/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/.env",
 			"settings":
 			{
@@ -554,11 +635,11 @@
 			}
 		},
 		{
-			"file": "/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/app/Http/Controllers/StoriesController.php",
+			"file": "/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/article/app/Http/Controllers/ArticlesController.php",
 			"settings":
 			{
-				"buffer_size": 175,
-				"line_ending": "Windows"
+				"buffer_size": 2967,
+				"line_ending": "Unix"
 			}
 		},
 		{
@@ -586,6 +667,14 @@
 			}
 		},
 		{
+			"file": "/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/app/Http/Controllers/Auth/LoginController.php",
+			"settings":
+			{
+				"buffer_size": 1068,
+				"line_ending": "Windows"
+			}
+		},
+		{
 			"file": "/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/.gitignore",
 			"settings":
 			{
@@ -597,7 +686,7 @@
 			"file": "/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/resources/views/layout/header.blade.php",
 			"settings":
 			{
-				"buffer_size": 2676,
+				"buffer_size": 2269,
 				"line_ending": "Windows"
 			}
 		},
@@ -613,8 +702,32 @@
 			"file": "/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/resources/views/layout/header/profile.blade.php",
 			"settings":
 			{
-				"buffer_size": 644,
+				"buffer_size": 673,
 				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/app/Providers/ComposerServiceProvider.php",
+			"settings":
+			{
+				"buffer_size": 1068,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/config/app.php",
+			"settings":
+			{
+				"buffer_size": 9582,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/app/Providers/AppServiceProvider.php",
+			"settings":
+			{
+				"buffer_size": 403,
+				"line_ending": "Unix"
 			}
 		},
 		{
@@ -629,8 +742,64 @@
 			"file": "/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/app/User.php",
 			"settings":
 			{
-				"buffer_size": 614,
+				"buffer_size": 837,
 				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/app/Genre.php",
+			"settings":
+			{
+				"buffer_size": 223,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/database/migrations/2017_04_12_073249_create_authors_table.php",
+			"settings":
+			{
+				"buffer_size": 816,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/database/migrations/2017_04_12_074349_create_stories_table.php",
+			"settings":
+			{
+				"buffer_size": 1119,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/database/seeds/StoriesTableSeeder.php",
+			"settings":
+			{
+				"buffer_size": 294,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/database/seeds/AuthorsTableSeeder.php",
+			"settings":
+			{
+				"buffer_size": 295,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/database/factories/AuthorFactory.php",
+			"settings":
+			{
+				"buffer_size": 654,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/database/factories/StoryFactory.php",
+			"settings":
+			{
+				"buffer_size": 1512,
+				"line_ending": "Unix"
 			}
 		},
 		{
@@ -645,15 +814,15 @@
 			"file": "/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/resources/views/layout/master.blade.php",
 			"settings":
 			{
-				"buffer_size": 1441,
+				"buffer_size": 912,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/database/migrations/2017_04_10_012826_create_password_resets.php",
+			"file": "/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/database/migrations/2017_04_12_060401_create_genres_table.php",
 			"settings":
 			{
-				"buffer_size": 611,
+				"buffer_size": 673,
 				"line_ending": "Windows"
 			}
 		},
@@ -661,7 +830,7 @@
 			"file": "/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/database/migrations/2017_04_10_012525_create_users_table.php",
 			"settings":
 			{
-				"buffer_size": 858,
+				"buffer_size": 867,
 				"line_ending": "Windows"
 			}
 		},
@@ -670,14 +839,6 @@
 			"settings":
 			{
 				"buffer_size": 1039,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/C/xampp/htdocs/mbuella/kwntu/src/templates/layout.php",
-			"settings":
-			{
-				"buffer_size": 1406,
 				"line_ending": "Windows"
 			}
 		},
@@ -754,22 +915,49 @@
 		"/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/app",
 		"/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/app/Http",
 		"/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/app/Http/Controllers",
-		"/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/app/Http/Controllers/Auth",
-		"/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/app/Http/Middleware",
+		"/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/app/Providers",
+		"/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/config",
 		"/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/database",
+		"/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/database/factories",
+		"/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/database/migrations",
 		"/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/database/seeds",
+		"/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/public",
+		"/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/public/assets",
+		"/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/public/assets/css",
+		"/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/public/assets/js",
 		"/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/resources",
+		"/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/resources/assets",
+		"/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/resources/assets/css",
+		"/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/resources/assets/js",
 		"/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/resources/views",
 		"/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/resources/views/auth",
+		"/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/resources/views/auth/passwords",
 		"/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/resources/views/layout",
+		"/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/resources/views/stories",
 		"/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/routes"
 	],
 	"file_history":
 	[
-		"/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/resources/lang/en/auth.php",
-		"/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/vendor/laravel/framework/src/Illuminate/Foundation/Auth/AuthenticatesUsers.php",
-		"/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/app/Http/Controllers/LoginMemberController.php",
+		"/C/xampp/htdocs/mbuella/kwntu/src/templates/story_preview.php",
+		"/C/xampp/htdocs/mbuella/kwntu/src/views/genre.php",
+		"/C/xampp/htdocs/mbuella/kwntu/src/views/read.php",
+		"/C/xampp/htdocs/mbuella/kwntu/src/templates/layout.php",
+		"/C/xampp/htdocs/mbuella/kwntu/src/config/config_dev.json",
+		"/C/xampp/htdocs/mbuella/kwntu/src/controllers/controller.php",
+		"/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/app/Http/helpers.php",
+		"/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/database/migrations/2017_04_10_012826_create_password_resets.php",
+		"/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/resources/views/stories.blade.php",
 		"/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/article/app/Http/Controllers/ArticlesController.php",
+		"/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/app/Providers/ViewComposers/HeaderComposer.php",
+		"/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/app/Http/ViewComposers/HeaderComposer.php",
+		"/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/app/Providers/ComposerServiceProvider.php",
+		"/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/app/Http/ViewComposers/ComposerServiceProvider.php",
+		"/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/vendor/laravel/framework/src/Illuminate/Foundation/Auth/AuthenticatesUsers.php",
+		"/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/config/app.php",
+		"/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/resources/lang/en/auth.php",
+		"/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/resources/lang/en/passwords.php",
+		"/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/app/Http/Controllers/AuthorsController.php",
+		"/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/app/Http/Controllers/LoginMemberController.php",
 		"/C/xampp/htdocs/mbuella/kwntu/src/templates/header_profile.php",
 		"/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/resources/views/auth/register.old.blade.php",
 		"/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/article/database/migrations/2017_04_10_032511_create_comments_table.php",
@@ -825,7 +1013,6 @@
 		"/C/xampp/htdocs/mbuella/kwntu/mysql/kwntu_tables.sql",
 		"/C/xampp/htdocs/mbuella/kwntu/public/assets/scripts/main.js",
 		"/C/xampp/htdocs/mbuella/milestone_1_5/vins_lib.php",
-		"/C/xampp/htdocs/mbuella/kwntu/src/config/config_dev.json",
 		"/C/xampp/htdocs/mbuella/kwntu/src/config/config_dev.ini",
 		"/C/xampp/htdocs/mbuella/kwntu/src/config/config_prod.ini",
 		"/C/xampp/htdocs/mbuella/kwntu/src/config/config_dev.ser",
@@ -878,22 +1065,7 @@
 		"/C/Program Files/Git/etc/ssh/ssh_config",
 		"/C/xampp/htdocs/mbuella/playground/easy_mvc/.git/config",
 		"/C/xampp/htdocs/mbuella/playground/simple_mvc/data/accounts.json",
-		"/C/xampp/htdocs/mbuella/playground/simple_mvc/views/count.php",
-		"/C/xampp/htdocs/mbuella/playground/simple_mvc/views/signin.php",
-		"/C/xampp/htdocs/mbuella/playground/simple_mvc/controllers/controllers.php",
-		"/C/xampp/htdocs/mbuella/playground/simple_mvc/models/model.php",
-		"/C/xampp/htdocs/mbuella/playground/simple_mvc/views/layout.php",
-		"/C/xampp/htdocs/mbuella/playground/simple_mvc/index.php",
-		"/C/xampp/htdocs/mbuella/playground/simple_mvc/original/index.php",
-		"/C/xampp/htdocs/mbuella/playground/simple_mvc/views/info.php",
-		"/C/xampp/htdocs/mbuella/playground/guessNumber.php",
-		"/C/xampp/htdocs/mbuella/exercises/exercise_a/addItem.php",
-		"/C/xampp/htdocs/mbuella/playground/simple-login.php",
-		"/C/xampp/htdocs/mbuella/exercises/exercise_a/profile_regular.php",
-		"/C/Users/Tuitt Batch 4/Documents/mbuella/playground/exercise1_js/codemagic.html",
-		"/C/Users/Tuitt Batch 4/Documents/mbuella/playground/jquery/practice1.html",
-		"/C/Users/Tuitt Batch 4/Documents/mbuella/playground/jquery/commentbox.html",
-		"/C/xampp/htdocs/mbuella/playground/exc_02_28_2017.php"
+		"/C/xampp/htdocs/mbuella/playground/simple_mvc/views/count.php"
 	],
 	"find":
 	{
@@ -914,6 +1086,14 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"4 .column.size-1of4",
+			"salvat",
+			"{{ $story->title }}",
+			"debug",
+			"AuthenticatesUsers",
+			"app.debug",
+			"debug",
+			"'failed'",
 			"These credentials do not match our records.",
 			"username()",
 			"username",
@@ -1049,7 +1229,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 16,
 			"sheets":
 			[
 				{
@@ -1077,7 +1257,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 28,
+					"stack_index": 49,
 					"type": "text"
 				},
 				{
@@ -1086,15 +1266,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1578,
+						"buffer_size": 1603,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								218,
-								218
+								0,
+								0
 							]
 						],
 						"settings":
@@ -1107,24 +1287,54 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 30,
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/routes/web.php",
+					"file": "/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/vendor/barryvdh/laravel-debugbar/config/debugbar.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 903,
+						"buffer_size": 6803,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								829,
-								829
+								387,
+								387
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 54.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 31,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/routes/web.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 976,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								701,
+								701
 							]
 						],
 						"settings":
@@ -1132,240 +1342,27 @@
 							"syntax": "Packages/PHP/PHP.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 450.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/app/Http/Controllers/Auth/LoginController.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1071,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								946,
-								946
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 343.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
+					"stack_index": 13,
 					"type": "text"
 				},
 				{
 					"buffer": 4,
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 9224,
-						"regions":
-						{
-							"match":
-							{
-								"flags": 112,
-								"regions":
-								[
-									[
-										233,
-										243
-									],
-									[
-										491,
-										501
-									],
-									[
-										788,
-										798
-									],
-									[
-										1083,
-										1093
-									],
-									[
-										1407,
-										1417
-									],
-									[
-										1588,
-										1598
-									],
-									[
-										1772,
-										1782
-									],
-									[
-										1912,
-										1922
-									],
-									[
-										2208,
-										2218
-									],
-									[
-										2504,
-										2514
-									],
-									[
-										2812,
-										2822
-									],
-									[
-										2891,
-										2901
-									],
-									[
-										3182,
-										3192
-									],
-									[
-										3482,
-										3492
-									],
-									[
-										3689,
-										3699
-									],
-									[
-										3859,
-										3869
-									],
-									[
-										4058,
-										4068
-									],
-									[
-										4215,
-										4225
-									],
-									[
-										4523,
-										4533
-									],
-									[
-										4710,
-										4720
-									],
-									[
-										4925,
-										4935
-									],
-									[
-										5178,
-										5188
-									],
-									[
-										5485,
-										5495
-									],
-									[
-										5765,
-										5775
-									],
-									[
-										6005,
-										6015
-									],
-									[
-										6284,
-										6294
-									],
-									[
-										6511,
-										6521
-									],
-									[
-										6781,
-										6791
-									],
-									[
-										7220,
-										7230
-									],
-									[
-										7712,
-										7722
-									],
-									[
-										7992,
-										8002
-									],
-									[
-										8350,
-										8360
-									],
-									[
-										8538,
-										8548
-									],
-									[
-										8697,
-										8707
-									],
-									[
-										9060,
-										9103
-									]
-								],
-								"scope": ""
-							}
-						},
-						"selection":
-						[
-							[
-								9081,
-								9081
-							]
-						],
-						"settings":
-						{
-							"default_dir": "C:\\Users\\Tuitt Batch 4\\Documents\\mbuella\\laravel\\kwntu",
-							"detect_indentation": false,
-							"line_numbers": false,
-							"output_tag": 2,
-							"result_base_dir": "",
-							"result_file_regex": "^([^ 	].*):$",
-							"result_line_regex": "^ +([0-9]+):",
-							"scroll_past_end": true,
-							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 4374.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
 					"file": "/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/app/Http/Controllers/HomeController.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 519,
+						"buffer_size": 566,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								24,
-								24
+								445,
+								445
 							]
 						],
 						"settings":
@@ -1375,27 +1372,57 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 324.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 36,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 5,
 					"file": "/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/resources/views/auth/login.blade.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3131,
+						"buffer_size": 3326,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								879,
-								879
+								1510,
+								1518
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 378.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 37,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/resources/views/auth/passwords/email.blade.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1936,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								340,
+								340
 							]
 						],
 						"settings":
@@ -1408,11 +1435,41 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 42,
 					"type": "text"
 				},
 				{
 					"buffer": 7,
+					"file": "/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/resources/views/auth/passwords/reset.blade.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3561,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								69,
+								69
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 43,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
 					"file": "/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/resources/views/auth/register.blade.php",
 					"semi_transient": false,
 					"settings":
@@ -1424,8 +1481,8 @@
 						"selection":
 						[
 							[
-								26,
-								63
+								63,
+								0
 							]
 						],
 						"settings":
@@ -1439,35 +1496,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/app/Http/Controllers/AuthorsController.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 175,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								172,
-								172
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 10,
+					"stack_index": 44,
 					"type": "text"
 				},
 				{
@@ -1476,15 +1505,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 507,
+						"buffer_size": 540,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								26,
-								64
+								67,
+								67
 							]
 						],
 						"settings":
@@ -1493,10 +1522,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 143.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 9,
+					"stack_index": 41,
 					"type": "text"
 				},
 				{
@@ -1526,7 +1555,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 19,
+					"stack_index": 29,
 					"type": "text"
 				},
 				{
@@ -1556,11 +1585,269 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 22,
+					"stack_index": 12,
 					"type": "text"
 				},
 				{
 					"buffer": 12,
+					"file": "/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/resources/views/genres/genres.blade.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1989,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								1989
+							]
+						],
+						"settings":
+						{
+							"open_with_edit": true,
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 126.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 13,
+					"file": "/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/app/Http/Controllers/StoriesController.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 703,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								690,
+								690
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 14,
+					"file": "/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/resources/views/stories/card.blade.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 655,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								476,
+								476
+							]
+						],
+						"settings":
+						{
+							"open_with_edit": true,
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 15,
+					"file": "/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/resources/assets/css/app.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4702,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3065,
+								3084
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 3905.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 16,
+					"file": "/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/public/assets/css/main.css",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 232068,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								230960,
+								230960
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.sublime-syntax"
+						},
+						"translation.x": 18155.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 17,
+					"file": "/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/app/Author.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 183,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								99,
+								180
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 18,
+					"file": "/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/resources/views/genres.blade.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2087,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								45,
+								52
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 19,
+					"file": "/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/resources/views/stories.blade.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1048,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								51,
+								51
+							]
+						],
+						"settings":
+						{
+							"open_with_edit": true,
+							"syntax": "Packages/PHP/PHP.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 1.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 20,
+					"file": "/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/app/Story.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 183,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								159,
+								159
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 21,
 					"file": "/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/.env",
 					"semi_transient": false,
 					"settings":
@@ -1572,8 +1859,8 @@
 						"selection":
 						[
 							[
-								0,
-								540
+								234,
+								234
 							]
 						],
 						"settings":
@@ -1581,14 +1868,14 @@
 							"syntax": "Packages/Text/Plain text.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 89.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 24,
+					"stack_index": 33,
 					"type": "text"
 				},
 				{
-					"buffer": 13,
+					"buffer": 22,
 					"file": "/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/.env.example",
 					"semi_transient": false,
 					"settings":
@@ -1612,39 +1899,41 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 23,
+					"stack_index": 25,
 					"type": "text"
 				},
 				{
-					"buffer": 14,
-					"file": "/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/app/Http/Controllers/StoriesController.php",
+					"buffer": 23,
+					"file": "/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/article/app/Http/Controllers/ArticlesController.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 175,
+						"buffer_size": 2967,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								114,
-								172
+								68,
+								86
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax"
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 20,
+					"stack_index": 26,
 					"type": "text"
 				},
 				{
-					"buffer": 15,
+					"buffer": 24,
 					"file": "/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/resources/views/pending.blade.php",
 					"semi_transient": false,
 					"settings":
@@ -1669,11 +1958,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 26,
+					"stack_index": 47,
 					"type": "text"
 				},
 				{
-					"buffer": 16,
+					"buffer": 25,
 					"file": "/C/xampp/htdocs/mbuella/kwntu/src/templates/header.php",
 					"semi_transient": false,
 					"settings":
@@ -1698,11 +1987,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 27,
+					"stack_index": 48,
 					"type": "text"
 				},
 				{
-					"buffer": 17,
+					"buffer": 26,
 					"file": "/C/xampp/htdocs/mbuella/kwntu/src/templates/footer.html",
 					"semi_transient": false,
 					"settings":
@@ -1727,17 +2016,47 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 21,
+					"stack_index": 45,
+					"type": "text"
+				},
+				{
+					"buffer": 27,
+					"file": "/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/app/Http/Controllers/Auth/LoginController.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1068,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								969,
+								969
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 323.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 28,
 					"type": "text"
 				}
 			]
 		},
 		{
-			"selected": 1,
+			"selected": 8,
 			"sheets":
 			[
 				{
-					"buffer": 18,
+					"buffer": 28,
 					"file": "/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/.gitignore",
 					"semi_transient": false,
 					"settings":
@@ -1761,24 +2080,24 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 25,
+					"stack_index": 46,
 					"type": "text"
 				},
 				{
-					"buffer": 19,
+					"buffer": 29,
 					"file": "/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/resources/views/layout/header.blade.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2676,
+						"buffer_size": 2269,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								667,
-								667
+								452,
+								452
 							]
 						],
 						"settings":
@@ -1788,14 +2107,14 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 162.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 27,
 					"type": "text"
 				},
 				{
-					"buffer": 20,
+					"buffer": 30,
 					"file": "/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/resources/views/layout/header/signin.blade.php",
 					"semi_transient": false,
 					"settings":
@@ -1807,8 +2126,8 @@
 						"selection":
 						[
 							[
-								126,
-								126
+								160,
+								160
 							]
 						],
 						"settings":
@@ -1818,27 +2137,27 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 486.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 11,
+					"stack_index": 38,
 					"type": "text"
 				},
 				{
-					"buffer": 21,
+					"buffer": 31,
 					"file": "/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/resources/views/layout/header/profile.blade.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 644,
+						"buffer_size": 673,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								288,
-								288
+								249,
+								249
 							]
 						],
 						"settings":
@@ -1851,11 +2170,101 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 14,
+					"stack_index": 35,
 					"type": "text"
 				},
 				{
-					"buffer": 22,
+					"buffer": 32,
+					"file": "/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/app/Providers/ComposerServiceProvider.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1068,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								404,
+								404
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 162.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 34,
+					"type": "text"
+				},
+				{
+					"buffer": 33,
+					"file": "/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/config/app.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 9582,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								590,
+								670
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 7217.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 32,
+					"type": "text"
+				},
+				{
+					"buffer": 34,
+					"file": "/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/app/Providers/AppServiceProvider.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 403,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								237,
+								237
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 39,
+					"type": "text"
+				},
+				{
+					"buffer": 35,
 					"file": "/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/app/Http/Controllers/Auth/RegisterController.php",
 					"semi_transient": false,
 					"settings":
@@ -1879,27 +2288,115 @@
 							"word_wrap": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1295.0,
+						"translation.y": 935.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 40,
 					"type": "text"
 				},
 				{
-					"buffer": 23,
+					"buffer": 36,
 					"file": "/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/app/User.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 614,
+						"buffer_size": 837,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								276,
-								276
+								561,
+								561
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 558.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 37,
+					"file": "/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/app/Genre.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 223,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								91,
+								91
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 14,
+					"type": "text"
+				},
+				{
+					"buffer": 38,
+					"file": "/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/database/migrations/2017_04_12_073249_create_authors_table.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 816,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								177,
+								177
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 17,
+					"type": "text"
+				},
+				{
+					"buffer": 39,
+					"file": "/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/database/migrations/2017_04_12_074349_create_stories_table.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1119,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								942,
+								942
 							]
 						],
 						"settings":
@@ -1912,11 +2409,125 @@
 						"translation.y": 54.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 17,
+					"stack_index": 16,
 					"type": "text"
 				},
 				{
-					"buffer": 24,
+					"buffer": 40,
+					"file": "/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/database/seeds/StoriesTableSeeder.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 294,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								273,
+								273
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 18,
+					"type": "text"
+				},
+				{
+					"buffer": 41,
+					"file": "/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/database/seeds/AuthorsTableSeeder.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 295,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								187,
+								286
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 20,
+					"type": "text"
+				},
+				{
+					"buffer": 42,
+					"file": "/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/database/factories/AuthorFactory.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 654,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								539,
+								539
+							]
+						],
+						"settings":
+						{
+							"open_with_edit": true,
+							"syntax": "Packages/PHP/PHP.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 21,
+					"type": "text"
+				},
+				{
+					"buffer": 43,
+					"file": "/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/database/factories/StoryFactory.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1512,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								656,
+								656
+							]
+						],
+						"settings":
+						{
+							"open_with_edit": true,
+							"syntax": "Packages/PHP/PHP.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 162.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 15,
+					"type": "text"
+				},
+				{
+					"buffer": 44,
 					"file": "/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/app/Member.php",
 					"semi_transient": false,
 					"settings":
@@ -1928,8 +2539,8 @@
 						"selection":
 						[
 							[
-								306,
-								306
+								5,
+								5
 							]
 						],
 						"settings":
@@ -1940,24 +2551,24 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 13,
+					"stack_index": 24,
 					"type": "text"
 				},
 				{
-					"buffer": 25,
+					"buffer": 45,
 					"file": "/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/resources/views/layout/master.blade.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1441,
+						"buffer_size": 912,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1071,
-								1071
+								0,
+								0
 							]
 						],
 						"settings":
@@ -1966,27 +2577,27 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 504.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 18,
+					"stack_index": 23,
 					"type": "text"
 				},
 				{
-					"buffer": 26,
-					"file": "/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/database/migrations/2017_04_10_012826_create_password_resets.php",
+					"buffer": 46,
+					"file": "/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/database/migrations/2017_04_12_060401_create_genres_table.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 611,
+						"buffer_size": 673,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								427,
-								427
+								380,
+								380
 							]
 						],
 						"settings":
@@ -1999,24 +2610,24 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 16,
+					"stack_index": 19,
 					"type": "text"
 				},
 				{
-					"buffer": 27,
+					"buffer": 47,
 					"file": "/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/database/migrations/2017_04_10_012525_create_users_table.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 858,
+						"buffer_size": 867,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								650,
-								650
+								186,
+								213
 							]
 						],
 						"settings":
@@ -2029,11 +2640,11 @@
 						"translation.y": 54.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 12,
+					"stack_index": 22,
 					"type": "text"
 				},
 				{
-					"buffer": 28,
+					"buffer": 48,
 					"file": "/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/database/migrations/2017_04_11_022903_create_members_table.php",
 					"semi_transient": false,
 					"settings":
@@ -2045,8 +2656,8 @@
 						"selection":
 						[
 							[
-								249,
-								249
+								863,
+								693
 							]
 						],
 						"settings":
@@ -2059,40 +2670,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 15,
+					"stack_index": 10,
 					"type": "text"
 				},
 				{
-					"buffer": 29,
-					"file": "/C/xampp/htdocs/mbuella/kwntu/src/templates/layout.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1406,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								222,
-								222
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 29,
-					"type": "text"
-				},
-				{
-					"buffer": 30,
+					"buffer": 49,
 					"file": "/C/Users/Tuitt Batch 4/Documents/mbuella/laravel/kwntu/resources/views/layout/footer.blade.php",
 					"semi_transient": false,
 					"settings":
@@ -2117,7 +2699,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 30,
+					"stack_index": 11,
 					"type": "text"
 				}
 			]
@@ -2151,7 +2733,7 @@
 		"cols":
 		[
 			0.0,
-			0.048971596474,
+			0.799220272904,
 			1.0
 		],
 		"rows":
@@ -2178,6 +2760,10 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"apps",
+				"app\\Providers\\AppServiceProvider.php"
+			]
 		],
 		"width": 0.0
 	},
@@ -2199,7 +2785,7 @@
 		],
 		"width": 0.0
 	},
-	"selected_group": 1,
+	"selected_group": 0,
 	"settings":
 	{
 	},
@@ -2207,7 +2793,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 345.0,
+	"side_bar_width": 340.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
