@@ -42,7 +42,7 @@
 
 	<div class="row">
 		<div class="grid" data-columns>	
-			@each('stories.card', $stories, 'story')
+			@each('stories.card', $stories, 'story','stories.empty')
 			<div class="clearfix"></div>
 		</div>
 	</div>

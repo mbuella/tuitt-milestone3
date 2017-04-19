@@ -9,6 +9,11 @@ use Illuminate\Support\Facades\Storage;
 
 class StoriesController extends Controller
 {
+	//private properties
+	private $genre;
+	private $stories;
+
+
     function index() {
     	//return the story genres
     	return view('genres');
@@ -16,13 +21,19 @@ class StoriesController extends Controller
 
     function getStories($genre_name) {
     	//get the requested genre object from database
-    	$genre = Genre::where('genre_slug', $genre_name)->first();
+    	$this->genre = Genre::where('genre_slug', $genre_name)
+    				  ->first();
+
     	//get all the stories with the genres
-    	$stories = $genre->stories;
+    	$this->stories = \App\Story::where('genre_id',$this->genre->id)
+    				 //->has('chapters')
+    				 ->get();
 
-    	//$fnm = $stories->first()->cover_filename;
-
-    	//return redirect(asset(Storage::url("covers/{$fnm}")));
-    	return view('stories',compact('stories','genre'));
+    	return view('stories')->with(
+    		[
+    			'genre' => $this->genre,
+    			'stories' => $this->stories
+    		]
+		);
     }
 }

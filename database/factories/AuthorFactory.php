@@ -14,7 +14,7 @@
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 $factory->define(App\Author::class, function (Faker\Generator $faker) {
     return [
-        'pen_name' => $faker->name($gender = null),
-        'user_id' => App\User::all()->random()->id
+        'pen_name' => $faker->name($gender = null)
+        //'user_id' => App\User::all()->random()->id
     ];
 });

@@ -5,7 +5,7 @@
 	</a>
 	<ul class="dropdown-menu signin-form">
 		<li class="text-center">
-			<img src="assets/images/avatar.png">
+			<img src="{{ asset('assets/images/avatar.png') }}">
 			<h4>{{ $fullname }}</h4>
 		</li>
 		<li role="separator" class="divider"></li> 

@@ -24,8 +24,8 @@ $factory->define(App\Story::class, function (Faker\Generator $faker) {
 	$title_slug = str_slug($title);
 	$cover = $faker->image(
 		$dir = 'storage\app\public\covers',
-		$width = $faker->numberBetween(200,300),
-		$height = $faker->numberBetween(200,300),
+		$width = 300,
+		$height = $faker->numberBetween(300,500),
 		'nature',
 		false,
 		true,
@@ -46,7 +46,7 @@ $factory->define(App\Story::class, function (Faker\Generator $faker) {
         'pub_date' => $pub_date,
         'cover_filename' => $cover,
 
-        'genre_id' => App\Genre::all()->random()->id,
-        'author_id' => App\Author::all()->random()->id
+        'genre_id' => App\Genre::all()->random()->id
+        //'author_id' => App\Author::all()->random()->id
     ];
 });

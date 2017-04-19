@@ -12,26 +12,16 @@
 */
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
-$factory->define(App\Chapter::class, function (Faker\Generator $faker) {
-
-	$title = ucwords($faker->words(
-		$nbWords = $faker->numberBetween(1,5),
-		$variableNbWords = true,
-		$asText = true
-	));
-
-	$text = $faker->paragraphs(
-		$nb = $faker->numberBetween(3,6),
-		$asText = true
-	);
-
-	$sort_id = session('sort_id');
-	//increment story_id for next story
-	session(['sort_id' => ++$sort_id]);
+$factory->define(App\User::class, function (Faker\Generator $faker) {
+    static $password;
+    $email = $faker->safeEmail;
+    //get user name from email
+    $user_name = strtok($email, '@');
 
     return [
-        'sort_id' => $sort_id,
-        'title' => $title,
-        'text' => $text
+        'user_name' => $user_name,
+        'user_email' => $email,
+        'user_pword' => $password ?: $password = bcrypt('secret'),
+        'remember_token' => str_random(10),
     ];
 });

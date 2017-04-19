@@ -8,6 +8,6 @@ class Author extends Model
 {
     //
     public function stories() {
-    	return $this->hasMany('App\Stories');
+    	return $this->hasMany('App\Story');
     }
 }

@@ -4,7 +4,7 @@
 	<title>@yield('title')</title>
 
 	<!-- Icon -->
-	<link rel="shortcut icon" type="image/x-icon" href="assets/images/kwntu.ico" />
+	<link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/images/kwntu.ico') }}" />
 
 	<!-- FONTS -->
 
