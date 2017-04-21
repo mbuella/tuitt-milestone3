@@ -29,15 +29,20 @@ gulp.task('compile-assets', function() {
 	.pipe(concat('main.css')) //include all css files into a single css file
     .pipe(gulp.dest('public/assets/css')); //copy the newly created file to the dir
 	
+	//move salvatorre plugin to public folder, minified
+	var salv_js = gulp.src('resources/assets/vendors/salvattore/*.js')
+		.pipe(uglify())
+        .pipe(gulp.dest('public/assets/js/lib'));
+
 	//run all functions
-  return merge(js,css);
+  	return merge(js,css,salv_js);
 });
 
 
 // Rerun the task when a file changes
 gulp.task('watch', function() {
-  //gulp.watch(paths.scripts, ['scripts']);
-  //gulp.watch(paths.images, ['images']);
+  gulp.watch(['resources/assets/js/app.js'], ['compile-assets']);
+  gulp.watch(['resources/assets/css/app.css'], ['compile-assets']);
 });
 
 // The default task (called when you run `gulp` from cli)

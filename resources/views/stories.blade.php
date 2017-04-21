@@ -42,10 +42,26 @@
 
 	<div class="row">
 		<div class="grid" data-columns>	
-			@each('stories.card', $stories, 'story','stories.empty')
+			@forelse($stories as $story)
+				@include('stories.card')
+				@if($loop->last)
+					@push('styles-footer')
+						<link rel="stylesheet"
+							type="text/css"
+							href="{{ asset('assets/css/salvattore-cards.css') }}">
+					@endpush()
+
+					@push('scripts-footer')
+					    <script src="{{ asset('assets/js/lib/salvattore.js') }}"></script>
+					@endpush
+				@endif
+			@empty($stories)
+				<h3 class="text-center">No stories for this genre.</h3>
+			@endforelse
 			<div class="clearfix"></div>
 		</div>
 	</div>
 </main>
+
 
 @endsection

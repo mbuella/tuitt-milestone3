@@ -18,9 +18,9 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
     	$this->user_count = 4;
-    	$this->auth_count = [2,4]; //range of author count
-    	$this->story_count = [5,8]; //range of story count
-    	$this->chapter_count = [5,10]; //range of chapter count
+    	$this->auth_count = [1,1]; //range of author count
+    	$this->story_count = [1,2]; //range of story count
+    	$this->chapter_count = [4,5]; //range of chapter count
 
     	//create faker factory
     	$faker = Faker\Factory::create();

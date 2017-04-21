@@ -23,17 +23,17 @@ class ChapterEventListener {
     {
         $events->listen(
             'App\Events\ChapterViewed',
-            'App\Listeners\UserEventListener@onChapterView'
+            'App\Listeners\ChapterEventListener@onChapterView'
         );
     
         $events->listen(
             'App\Events\ChapterHearted',
-            'App\Listeners\UserEventListener@onChapterHeart'
+            'App\Listeners\ChapterEventListener@onChapterHeart'
         );
 
         $events->listen(
             'App\Events\ChapterBookmarked',
-            'App\Listeners\UserEventListener@onChapterBookmark'
+            'App\Listeners\ChapterEventListener@onChapterBookmark'
         );
     }
 }

@@ -13,8 +13,12 @@
 	<!-- Lora font -->
 	{{ HTML::style('https://fonts.googleapis.com/css?family=Lora') }}
 
+	<!-- App styles/scripts -->
 	<!-- CSS -->
-	{{ HTML::style('assets/css/main.css') }}	
+	{{ HTML::style('assets/css/main.css') }}
+	<!-- JS -->
+	{{ HTML::script('assets/js/main.js') }}	
+
 </head>
 <body>
 
@@ -39,9 +43,9 @@
 
 @include('layout.footer')
 
+@stack('styles-footer')
 
-	<!-- JS -->
-	{{ HTML::script('assets/js/main.js') }}
+@stack('scripts-footer')
 	
 </body>
 </html>
