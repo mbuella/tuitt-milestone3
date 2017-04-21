@@ -34,7 +34,7 @@
           </li>
 
           <!-- Items on the right (first entry is last to display) -->
-          <li class="pull-right">
+          <li class="pull-right search-li">
             <form class="search-form">
               <input name="search-keyword"
                    class="search-box form-control"
