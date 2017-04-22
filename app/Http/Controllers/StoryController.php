@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Story;
 use App\Events\ChapterViewed;
+use Illuminate\Support\Facades\Auth;
 
 class StoryController extends Controller
 {
@@ -30,9 +31,6 @@ class StoryController extends Controller
 	}
 
     public function index($story_slug, $chapter = 1) {
-    	//fire chapter read listener
-		event(new ChapterViewed());
-
     	//set max length of each paragraph
     	$this->text_length = 500;
     	//no chapter title
@@ -61,6 +59,9 @@ class StoryController extends Controller
 			    	return $item->sort_id == $this->chap_id;
 				}
 			)->first();
+
+	    	//fire chapter read listener
+			event(new ChapterViewed($curr_chapter));
 
 			//chapter text nl2br
 			$chap_p = $this->nl2p($curr_chapter->text);

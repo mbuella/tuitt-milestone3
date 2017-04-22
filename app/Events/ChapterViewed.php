@@ -14,14 +14,16 @@ class ChapterViewed
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
+    public $chapter;
+
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($chapter)
     {
-        //
+        $this->chapter = $chapter;
     }
 
     /**

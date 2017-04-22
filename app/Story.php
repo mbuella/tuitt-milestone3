@@ -18,8 +18,9 @@ class Story extends Model
     }
     public function getTotalViews() {
         $count = 0;
+        // dd($this->chapters);
         foreach ($this->chapters as $chapter) {
-            $count += count($chapter->users);
+            $count += $chapter->view_count;
         }
         return $count;
     }    

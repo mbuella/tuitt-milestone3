@@ -18,6 +18,7 @@ class CreateChaptersTable extends Migration
             $table->mediumInteger('sort_id');
             $table->string('title');
             $table->mediumText('text')->nullable();
+            $table->integer('view_count')->default(0);
             $table->mediumInteger('story_id')->unsigned();
             $table->timestamps();
 
