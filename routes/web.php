@@ -44,13 +44,13 @@ Route::get('/story/{story_slug}/',
 	'StoryController@index'
 );
 
-//also catch urls with no slugs but chapter already indicated
-/*Route::get('/story/{story}/chapter/{chapter}',
-	'StoryController@getChapter'
-);
-*/
 Route::get('/story/{story_slug}/chapter/{chapter}',
 	'StoryController@index'
+);
+
+/*** Chapter Routes ***/
+Route::post('/story/{story_slug}/chapter/{chapter}/delete',
+	'ChapterController@delete'
 );
 
 /*** Authors Routes ***/

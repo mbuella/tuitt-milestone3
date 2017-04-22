@@ -19,20 +19,27 @@
 					<small> ni {{ $story->author->pen_name }} </small>
 				</div>
 				<div class="list-group chapter-list">
+					@can('update',$curr_chapter)
+					<button class="list-group-item list-group-item-info"
+							style="text-align: center !important;">
+						<i class="fa fa-bars"></i>
+						Order chapters						
+					</button>
+					@endcan
+					@foreach($chapters as $chapter)
+						@if($curr_chapter->id == $chapter->id)
+							{{ HTML::tag('span',"$chapter->title 
 
-				@foreach($chapters as $chapter)
-					@if($curr_chapter->id == $chapter->id)
-						{{ HTML::tag('span',$chapter->title,[
-							'class' => 'list-group-item active'
-						]) }}
-					@else
-						{{ HTML::tag('a',$chapter->title,[
-							'href' => url("story/$story->id-$story->title_slug/chapter/$chapter->sort_id"),
-							'class' => 'list-group-item'
-						]) }}
-					@endif
-				@endforeach
-
+							",[
+								'class' => 'list-group-item active'
+							]) }}
+						@else
+							{{ HTML::tag('a',$chapter->title,[
+								'href' => url("story/$story->id-$story->title_slug/chapter/$chapter->sort_id"),
+								'class' => 'list-group-item'
+							]) }}
+						@endif
+					@endforeach
 				</div>
 			</div>
 		</div>
@@ -42,7 +49,7 @@
 					<div class="story-top" data-spy="affix" data-offset-top="75">
 						<!-- $chap_nav_btn  -->
 						@if(Auth::check())
-							@if($story->author->user_id == Auth::id())
+							@can('update', $curr_chapter)
 
 							<div id="writer-tools">
 								<button
@@ -74,7 +81,7 @@
 								</button>						
 							</span>
 
-							@endif
+							@endcan
 						@else	
 
 							<a href="/login" class="btn btn-info" id="signin-btn">
@@ -224,6 +231,8 @@
 		</div>
 	</div>
 </main>
+
+@can('update', $curr_chapter)
 <div class="screen">
 	
 </div>
@@ -264,4 +273,5 @@
 		</div>
 	</div>
 </div>
+@endcan
 @endsection

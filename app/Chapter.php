@@ -12,4 +12,7 @@ class Chapter extends Model
     	->withPivot('hearted', 'bookmarked')
     	->withTimestamps();
     }
+    public function story() {
+    	return $this->belongsTo('App\Story');
+    }
 }

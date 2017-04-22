@@ -60,8 +60,11 @@ class StoryController extends Controller
 				}
 			)->first();
 
-	    	//fire chapter read listener
-			event(new ChapterViewed($curr_chapter));
+	    	//owner view doesn't need to be recorded
+			if (!Auth::user()->can('update', $curr_chapter)) {
+		    	//fire chapter read listener
+				event(new ChapterViewed($curr_chapter));
+			}
 
 			//chapter text nl2br
 			$chap_p = $this->nl2p($curr_chapter->text);

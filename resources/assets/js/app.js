@@ -41,7 +41,7 @@ $(document).ready(function() {
         $('span.chapter-title').addClass('chapter-title-edit');
         $('div.chapter-text').addClass('chapter-text-edit');
         //replace the buttons with reset and preview buttons
-        $('#writer-tools').load('assets/html/edit-tools.html');
+        $('#writer-tools').load('/storage/assets/html/edit-tools.html');
 	});
 
 	//preview changes button
@@ -54,7 +54,7 @@ $(document).ready(function() {
 	        $('div.chapter-text').removeClass('chapter-text-edit');
         	
 	        //replace the buttons with cancel and save buttons
-	        $('#writer-tools').load('assets/html/edit-tools-confirm.html');		
+	        $('#writer-tools').load('/storage/assets/html/edit-tools-confirm.html');		
 	});
 	
 	//cancel edit button
@@ -122,26 +122,31 @@ $(document).ready(function() {
 			if ($('#delete-chapter-btn').hasClass('confirm-btn')) {
 
                 e.preventDefault();
-
+                
 				//send the processed array to server
-		    	$.post('ajax/deletechap', {},
-		    		function(response,status){
-		    			if (status == 'success') {
-							//reload
-							console.log(response);
-							//redirect to the intro page
+
+                $.ajax({
+				    url: $(location).attr('href').split('?')[0]+'/delete',
+				    type: 'post',
+				    headers: {
+					    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+					},
+				    dataType: 'json',
+				    success: function (data) {				        
+		    			if (data.status == 'success') {
+							//redirect to the first chapter
 							window.location.replace(
-								$(".chapter-list > .list-group-item.active")
-									.prev()
-									.attr('href')
+								$(location).attr('href')
+										   .split('/chapter')[0]
 							);
 			    		}
 			    		else {
 			    			//handle ajax error
-			    			console.log(status);
+			    			console.log(data.status);
 			    		}
-		    		}
-		    	);
+				    }
+				});
+
 
                 e.preventDefault();
 			}
