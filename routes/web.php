@@ -30,10 +30,28 @@ Route::get('/about',function(){
 
 
 /*** Stories Routes ***/
-Route::get('/stories',
+Route::get('/stories/',
 	'StoriesController@index'
 );
 
+Route::get('/stories/{genre_name}',
+	'StoriesController@getStories'
+);
+
+
+/*** Story Page Routes ***/
+Route::get('/story/{story_slug}/',
+	'StoryController@index'
+);
+
+Route::get('/story/{story_slug}/chapter/{chapter}',
+	'StoryController@index'
+);
+
+/*** Chapter Routes ***/
+Route::post('/story/{story_slug}/chapter/{chapter}/delete',
+	'ChapterController@delete'
+);
 
 /*** Authors Routes ***/
 Route::get('/authors',

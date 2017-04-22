@@ -1,0 +1,37 @@
+/***
+	CSS OVERIDES FOR EXTRA-SMALL DEVICES (SMARTPHONES)
+***/
+
+@media only screen and (max-width: 768px){
+
+/** Bootstrap **/
+
+.container, .container-fluid {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.navbar-nav {
+    width: inherit; 
+}
+
+.navbar-nav > li {
+	display: block;
+	width: 100%;
+	text-align: center;
+}
+
+.navbar-nav > li.search-li {
+	text-align: right;
+}
+
+.signin-form li {
+	width: inherit !important;
+	text-align: center;
+}
+
+.search-form > input {
+	text-align: right;
+}
+
+}

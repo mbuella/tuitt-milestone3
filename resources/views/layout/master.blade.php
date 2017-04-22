@@ -3,35 +3,27 @@
 <head>
 	<title>@yield('title')</title>
 
+	<!-- CSRF Token -->
+	<meta name="csrf-token" content="{{ csrf_token() }}">
+	<!-- Responsive Design Viewport -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 	<!-- Icon -->
-	<link rel="shortcut icon" type="image/x-icon" href="assets/images/kwntu.ico" />
+	<link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/images/kwntu.ico') }}" />
 
 	<!-- FONTS -->
 
 	<!-- Raleway font -->
 	{{ HTML::style('https://fonts.googleapis.com/css?family=Raleway') }}
-
 	<!-- Lora font -->
 	{{ HTML::style('https://fonts.googleapis.com/css?family=Lora') }}
 
-	<!-- Font Awesome! -->
-	<link rel="stylesheet" type="text/css" href="vendors/fontawesome/styles/font-awesome.min.css">
-
-	<!-- LIBRARIES -->
-	<!-- Bootstrap CSS -->
-	{{ HTML::style('vendors/bootstrap/styles/bootstrap.min.css') }}
-	<!-- jQuery -->
-	{{ HTML::script('vendors/jquery/scripts/jquery.min.js') }}
-	<!-- Bootstrap JS -->
-	{{ HTML::script('vendors/bootstrap/scripts/bootstrap.min.js') }}
-
-	<!-- CUSTOM -->
-	<!-- Customized Bootsrap Theme -->
-	{{ HTML::style('vendors/bootstrap/styles/bootstrap.custom.min.css') }}
+	<!-- App styles/scripts -->
 	<!-- CSS -->
-	{{ HTML::style('assets/styles/main.css') }}
+	{{ HTML::style('assets/css/main.css') }}
 	<!-- JS -->
-	{{ HTML::script('assets/scripts/main.js') }}
+	{{ HTML::script('assets/js/main.js') }}	
+
 </head>
 <body>
 
@@ -56,5 +48,9 @@
 
 @include('layout.footer')
 
+@stack('styles-footer')
+
+@stack('scripts-footer')
+	
 </body>
 </html>

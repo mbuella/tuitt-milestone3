@@ -32,6 +32,9 @@ class User extends Authenticatable
         return $this->hasOne('App\Member');
     }
 
+    public function authors() {
+        return $this->hasMany('App\Author');
+    }
     /***
         We need to rename getAuthPassword()
         ->user_pword to user_pword, the 
