@@ -50,13 +50,22 @@ Route::get('/story/{story_slug}/chapter/{chapter}',
 
 
 /*** Chapter Routes ***/
-Route::post('/story/{story_slug}/delete',
-	'ChapterController@delete'
+
+/** Chapter insert **/
+
+Route::post('/story/{story_slug}/add',
+	'ChapterController@chapterAddModal'
 );
 
-Route::post('/story/{story_slug}/chapter/{chapter_id}/delete',
-	'ChapterController@delete'
+Route::post('/story/{story_slug}/chapter/{chapter_id}/add',
+	'ChapterController@chapterAddModal'
 );
+
+Route::post('/story/{story_slug}/chapter/{chapter_id}/insert',
+	'ChapterController@insertChapter'
+);
+
+/** Chapter update **/
 
 Route::post('/story/{story_slug}/edit',
 	'ChapterController@chapterEditModal'
@@ -70,7 +79,19 @@ Route::post('/story/{story_slug}/chapter/{chapter_id}/save',
 	'ChapterController@saveChapter'
 );
 
+/** Chapter delete **/
+
+Route::post('/story/{story_slug}/delete',
+	'ChapterController@delete'
+);
+
+Route::post('/story/{story_slug}/chapter/{chapter_id}/delete',
+	'ChapterController@delete'
+);
+
+
 /*** Authors Routes ***/
+
 Route::get('/authors',
 	'AuthorsController@index'
 );

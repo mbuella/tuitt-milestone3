@@ -12,7 +12,7 @@ class Chapter extends Model
      * @var array
      */
     protected $fillable = [
-        'title', 'text'
+        'title', 'text', 'sort_id',
     ];
 
 
