@@ -28,12 +28,28 @@ $(document).ready(function() {
 	//edit button
 	$('#writer-tools').on('click','#edit-chapter-btn',
 		function(e){
-        //disable nav buttons
+			//get chapter text to be edited			
+	        $.ajax({
+			    url: $(location).attr('href').split('?')[0]+'/edit',
+			    type: 'post',
+			    headers: {
+				    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+				},
+			    success: function (data) {
+					$('#chapModal > div').html(data);
+					//set current chapter and focus on it
+					$('#chapter-title').focus();
+			    }
+			});	
+//			e.preventDefault();
+        /*//disable nav buttons
         $('.screen').addClass('screen-activated');
         //display the story body
         $('.story-body').css('z-index','999');
         //disable other buttons
         $('.story-nav .btn').attr('disabled',true);
+        //hide page navigation
+        $('ul.pagination').hide();
 		
 		//add contenteditable attr
         $('.chapter-title, .chapter-text').attr('contenteditable', 'true');
@@ -41,7 +57,7 @@ $(document).ready(function() {
         $('span.chapter-title').addClass('chapter-title-edit');
         $('div.chapter-text').addClass('chapter-text-edit');
         //replace the buttons with reset and preview buttons
-        $('#writer-tools').load('/storage/assets/html/edit-tools.html');
+        $('#writer-tools').load('/storage/assets/html/edit-tools.html');*/
 	});
 
 	//preview changes button

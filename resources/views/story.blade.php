@@ -35,7 +35,7 @@
 							]) }}
 						@else
 							{{ HTML::tag('a',$chapter->title,[
-								'href' => url("story/$story->id-$story->title_slug/chapter/$chapter->sort_id"),
+								'href' => $chapter->getUrl(),
 								'class' => 'list-group-item'
 							]) }}
 						@endif
@@ -56,11 +56,15 @@
 									class="btn btn-success"
 									id="add-chapter-btn"
 									data-toggle="modal"
-									data-target="#addChapModal">
+									data-target="#chapModal">
 									<i class="fa fa-plus"></i>
 									<span>Insert chapter</span>
 								</button>			
-								<button class="btn btn-info" id="edit-chapter-btn">
+								<button
+									class="btn btn-info"
+									id="edit-chapter-btn"
+									data-toggle="modal"
+									data-target="#chapModal">
 									<i class="fa fa-edit"></i>
 									<span>Edit chapter</span>
 								</button>			
@@ -119,36 +123,15 @@
 						@isset($text_pgn)
 							{!! $text_pgn->links() !!}
 						@endisset
-						<!-- <ul class="pagination">
-							<li>
-								<a href="#" aria-label="Previous">
-									<span aria-hidden="true">&laquo;</span>
-								</a>
-							</li>
-							<li>
-								<a href="#">1</a>
-							</li>
-							<li class="active">
-								<span>2</span>
-							</li>
-							<li class="disabled">
-								<span>3</span>
-							</li>
-							<li class="disabled">
-								<span>
-									<span aria-hidden="true">&raquo;</span>
-								</span>
-							</li>
-						</ul> -->
 					</nav>
 				</div>
 				@isset($chap_num)
 				<div class="panel-footer story-nav">		
 					<!--  $page_nav_btns -->
-					@if($chap_num > 1)
+					@if($curr_chapter->getPrevChapUrl())
 					<div class='pull-left'>
 						<a			
-							href='/story/{{ $story->id }}-{{ $story->title_slug }}/chapter/{{ $chap_num-1 }}'				
+							href='{{ $curr_chapter->getPrevChapUrl() }}'			
 							class='btn btn-info'>
 								<span aria-hidden='true'>&larr;</span>
 								<span class='hidden-xs'>
@@ -157,10 +140,10 @@
 						</a>
 					</div>
 					@endif
-					@if($chap_num < $chapters->max('sort_id'))
+					@if($curr_chapter->getNextChapUrl())
 					<div class='pull-right'>
 						<a
-							href='/story/{{ $story->id }}-{{ $story->title_slug }}/chapter/{{ $chap_num+1 }}'
+							href='{{ $curr_chapter->getNextChapUrl() }}'
 							class='btn btn-info '>
 								<span class='hidden-xs'>
 									Next Chapter
@@ -202,29 +185,6 @@
 						 	 alt='{{ $genre_story->title }}'>
 					</a>								
 					@endforeach
-<!-- 					<a href="#">
-						<img class="img-responsive img-thumbnail"
-							 src="assets/images/covers/bakit-di-ka-crush-ng-crush-mo.jpg"
-						 	 alt="Card image">						
-					</a>				
-
-					<a href="#">
-						<img class="img-responsive img-thumbnail"
-							 src="assets/images/covers/ang-tundo-man-may-langit-din.jpg"
-						 	 alt="Card image">						
-					</a>
-
-					<a href="#">
-						<img class="img-responsive img-thumbnail"
-							 src="assets/images/covers/rizal-without-the-overcoat.jpg"
-						 	 alt="Card image">						
-					</a>
-
-					<a href="#">
-						<img class="img-responsive img-thumbnail"
-							 	 src="assets/images/covers/titser.jpg"
-						 alt="Card image">						
-					</a> -->
 				</div>
 				
 			</div>
@@ -237,38 +197,26 @@
 	
 </div>
 
-<div class="modal fade" id="addChapModal" role="dialog">
-	<div class="modal-dialog modal-lg">
+<div class="modal fade" id="chapModal" role="dialog">
+	<div class="modal-dialog modal-lg">		
 		<div class="modal-content">
 			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h3 class="modal-title">Add Chapter</h3>
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+					<i class="fa fa-times"></i>
+				</button>
+				<h3>Please wait while we load the form...</h3>
 			</div>
 			<div class="modal-body">
-				<form method="POST" action="save_chapter">
-					<div class="form-group">
-						<label for="chapter-title">Title of the chapter</label>
-						<input type="text"
-							name="chapter[title]"
-							id="chapter-title"
-							class="form-control"
-							placeholder="example: Chapter 20: Gabi ng Lagim!">						
+				<div class="loader">
+					<div class="progress loader hidden-xs">
+					  <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+					    <span class="sr-only">Loading</span>
+					  </div>
+					</div>						
+					<div class="visible-xs text-center">
+						<span class="fa fa-spinner fa-spin fa-5x"></span>
 					</div>
-					<div class="form-group">
-						<label for="chapter-text">Chapter content</label>
-						<textarea name="chapter[text]"
-							id="chapter-text"
-							class="form-control"
-							placeholder="example: One day, isang araw..." 
-							rows=10></textarea>
-					</div>
-					<button type="submit"
-						name = "chapter[submit]"
-						id = "chapter-submit"
-						class="btn btn-info pull-right">
-						Create new chapter</button>
-					<div class="clearfix"></div>
-				</form>
+				</div>
 			</div>
 		</div>
 	</div>

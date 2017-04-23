@@ -13,7 +13,6 @@ use Illuminate\Support\Facades\Auth;
 class StoryController extends Controller
 {
 	//private properties
-	private $chap_id;
 	private $text_length;
 
 	private function nl2p($text) {
@@ -30,7 +29,7 @@ class StoryController extends Controller
 		return $pText;
 	}
 
-    public function index($story_slug, $chapter = 1) {
+    public function index($story_slug, $chapter = null) {
     	//set max length of each paragraph
     	$this->text_length = 500;
     	//no chapter title
@@ -52,16 +51,14 @@ class StoryController extends Controller
     	//if the story has chapters
     	if ($chapters->isNotEmpty()) {
 	    	//set the current chapter
-	    	//Warning: will return null if story dont have chapters
-	    	$this->chap_id = $chapter;
-	    	$curr_chapter = $chapters->filter(
-	    		function($item) {
-			    	return $item->sort_id == $this->chap_id;
-				}
-			)->first();
+	    	if(is_null($chapter))
+	    		$curr_chapter = $chapters->first();
+	    	else
+		    	//chapter id is the id itself
+		    	$curr_chapter = $chapters->find($chapter);
 
 	    	//owner view doesn't need to be recorded
-			if (!Auth::user()->can('update', $curr_chapter)) {
+			if (!Auth::check() || !Auth::user()->can('update', $curr_chapter)) {
 		    	//fire chapter read listener
 				event(new ChapterViewed($curr_chapter));
 			}
@@ -70,7 +67,7 @@ class StoryController extends Controller
 			$chap_p = $this->nl2p($curr_chapter->text);
 			//current chapter num
 			$chap_num = $curr_chapter->sort_id;
-			//paginate array
+			//paginate text
 			$text_arr = str_split($curr_chapter->text,$this->text_length);
 			$text_pgn = new LengthAwarePaginator(
 				$text_arr,
@@ -120,29 +117,5 @@ class StoryController extends Controller
 				'story_slug','chap_title',
 				'genre_stories'
 			));
-
-
-
-		/*** OUTPUT DEBUG LINES (comment return above to run) ***/
-		echo "<h3>Story</h3>";
-    	echo "<p>Story id: {$story->id}</p>";
-    	echo "<p>Story title: {$story->title}</p>";
-    	echo "<p>Story Author: {$story->author->pen_name}</p>";
-    	echo "<p>Story image: <img src='$story_cover'></p>";
-    	echo "<p>Story slug: $story_slug</p>";
-		echo "<h3>Chapter</h3>";
-    	echo "<p>Chapter id: $chapter</p>";
-    	echo "<p>Chapter title: {$curr_chapter->title}</p>";
-    	echo "Chapter text:";
-    	echo "<p>$chap_p</p>";
-    	echo "<h3>Chapter list</h3>";
-    	echo "<ul>";
-    	foreach ($chapters as $chapter) {
-    		echo "<li>
-    			<a href='$chapter->sort_id'>$chapter->title</a>
-    		</li>";
-    	}
-    	echo "</ul>";
-    	//dd($curr_chapter);
 	}
 }
