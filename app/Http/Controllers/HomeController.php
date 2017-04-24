@@ -27,6 +27,26 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $ctrlr = $this;
+
+        //get current user
+        $user = Auth::user();
+
+        //get the member
+        $member = $user->member;
+
+        //get all stories of user
+        $allStories = $user->stories;
+
+        //get authors of the user
+        $authors = $user->authors;
+
+        //stories to be loaded
+        $more_stories_count = $allStories->count()-7;
+
+        return view('home',compact(
+            'user','member','allStories','authors','more_stories_count',
+            'ctrlr'
+        ));
     }
 }

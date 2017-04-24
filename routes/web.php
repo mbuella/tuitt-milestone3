@@ -57,13 +57,15 @@ Route::post('/story/{story_slug}/add',
 	'ChapterController@chapterAddModal'
 );
 
-Route::post('/story/{story_slug}/chapter/{chapter_id}/add',
+Route::post('/story/{story_slug}/chapter/{chapter}/add',
 	'ChapterController@chapterAddModal'
 );
 
-Route::post('/story/{story_slug}/chapter/{chapter_id}/insert',
+Route::post('/story/{story_slug}/chapter/{chapter}/insert',
 	'ChapterController@insertChapter'
-);
+)->middleware('can:update-chapter,chapter');
+//we can use update-chapter since we already allowed the user to add
+//chapter
 
 /** Chapter update **/
 
@@ -71,13 +73,13 @@ Route::post('/story/{story_slug}/edit',
 	'ChapterController@chapterEditModal'
 );
 
-Route::post('/story/{story_slug}/chapter/{chapter_id}/edit',
+Route::post('/story/{story_slug}/chapter/{chapter}/edit',
 	'ChapterController@chapterEditModal'
 );
 
-Route::post('/story/{story_slug}/chapter/{chapter_id}/save',
+Route::post('/story/{story_slug}/chapter/{chapter}/save',
 	'ChapterController@saveChapter'
-);
+)->middleware('can:update-chapter,chapter');
 
 /** Chapter delete **/
 
@@ -85,7 +87,7 @@ Route::post('/story/{story_slug}/delete',
 	'ChapterController@delete'
 );
 
-Route::post('/story/{story_slug}/chapter/{chapter_id}/delete',
+Route::post('/story/{story_slug}/chapter/{chapter}/delete',
 	'ChapterController@delete'
 );
 
@@ -100,5 +102,13 @@ Route::get('/authors',
 Auth::routes();
 
 
-/*** Member Dashboard ***/
+/*** Current Login Dashboard ***/
 Route::get('/home', 'HomeController@index');
+
+/*** Member Profile ***/
+# Route::get('/{user_name}', 'ProfileController@index');
+
+/*** Member authors page (by authors) ***/
+/*Route::get('/{user_name}/{story_slug}/chapter/{chapter_id}/delete',
+	'ChapterController@delete'
+);*/

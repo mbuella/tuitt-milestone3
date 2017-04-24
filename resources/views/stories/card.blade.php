@@ -1,5 +1,9 @@
 <div class="story">
-	<button class="btn btn-info prevw-btn hide">Sneek Peek</button>
+	@if (Auth::check() && Auth::user()->can('update-story', $story))
+		<button class="btn btn-info prevw-btn story-edit-btn hide">Edit Story</button>
+	@else
+		<button class="btn btn-info prevw-btn hide">Sneek Peek</button>
+	@endif
 	@if(Auth::check())
 
 	<button class="btn btn-info prevw-btn hide" style="left: 0">
@@ -9,7 +13,7 @@
 	@endif
 	<a href='{{ url("/story/$story->id-$story->title_slug") }}'>
 		<img class="img-responsive img-thumbnail"
-			 src='{{ asset(Storage::url("covers/$story->cover_filename")) }}'
+			 src='{{ $story->getCover() }}'
 		 	 alt="{{ $story->title }}">
 		<div class="panel hide">
 			<h4>

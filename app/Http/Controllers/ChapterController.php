@@ -22,38 +22,27 @@ class ChapterController extends Controller
     	}
     	else {
 	    	return $story->chapters
-	    					 ->find($chapter_id);    		
+	    				->find($chapter_id);    		
     	}
     }
 
-    public function chapterEditModal($story_slug, $chapter_id = null) {
-    	//get story
-    	$story = $this->getStory($story_slug);
-
-    	//get chapter
-    	$chapter = $this->getChapter($story,$chapter_id);   
-
-    	//test if the user is authorized to delete the chapter
-    	$this->authorize('delete', $chapter); 	
-
-    	$modal_title = 'Edit Chapter';
-    	$post_url = $chapter->getUrl() . '/save';
-
-    	return view('chapter.modal',
-    		compact('chapter','modal_title','btn_text','post_url')
-		);
+    private function getFirstChapter($story) {
+        return $story->chapters
+                     ->sortBy('sort_id')
+                     ->first();         
     }
 
-
-    public function chapterAddModal($story_slug, $chapter_id = null) {
+    public function chapterAddModal($story_slug, Chapter $chapter = null) {
     	//get story
     	$story = $this->getStory($story_slug);
 
-    	//get chapter
-    	$chapter = $this->getChapter($story,$chapter_id);   
+        //validate if chapter is null
+        if (is_null($chapter->id)) {
+            $chapter = $this->getFirstChapter($story);
+        }
 
-    	//test if the user is authorized to delete the chapter
-    	$this->authorize('delete', $chapter); 	
+        //authorize user to create chapter
+        $this->authorize('create-chapter',$story);
 
     	$modal_title = 'Create New Chapter';
     	$post_url = $chapter->getUrl() . '/insert';
@@ -63,15 +52,9 @@ class ChapterController extends Controller
 		);
     }
 
-    public function insertChapter($story_slug, $chapter_id = null, Request $request) {
+    public function insertChapter($story_slug, Chapter $chapter = null, Request $request) {
 		//get story
     	$story = $this->getStory($story_slug);
-
-    	//get chapter
-    	$chapter = $this->getChapter($story,$chapter_id); 
-
-    	//test if the user is authorized to update the chapter
-    	$this->authorize('update', $chapter); 	   
 
     	//new chapter sort id (insert after the current chapter)
     	$new_chap_sid = $chapter->sort_id + 1;
@@ -102,15 +85,31 @@ class ChapterController extends Controller
     	return redirect($new_chapter->getUrl());
     }
 
-    public function saveChapter($story_slug, $chapter_id = null, Request $request) {
+    public function chapterEditModal($story_slug, Chapter $chapter = null) {
+        //get story from slug
+        $story = $this->getStory($story_slug);
+
+        //validate if chapter is null
+        if (is_null($chapter)) {
+            $chapter = getFirstChapter($story);
+        }
+
+        $modal_title = 'Edit Chapter';
+        $post_url = $chapter->getUrl() . '/save';
+
+        return view('chapter.modal',
+            compact('chapter','modal_title','btn_text','post_url')
+        );
+    }
+
+    public function saveChapter($story_slug, Chapter $chapter = null, Request $request) {
     	//get story
     	$story = $this->getStory($story_slug);
 
-    	//get chapter
-    	$chapter = $this->getChapter($story,$chapter_id); 
-
-    	//test if the user is authorized to update the chapter
-    	$this->authorize('update', $chapter); 	
+        //validate if chapter is null
+        if (is_null($chapter)) {
+            $chapter = getFirstChapter($story);
+        }
 
     	//update details from request
     	$updates = $request->chapter;
@@ -122,26 +121,27 @@ class ChapterController extends Controller
     	return redirect($chapter->getUrl());
     }
 
-    public function delete($story_slug, $chapter_id = null) {
+    public function delete($story_slug, Chapter $chapter = null) {
     	//get story
     	$story = $this->getStory($story_slug);
 
     	/*** PRE DELETE ***/
 
-    	//get chapter
-    	$chapter = $this->getChapter($story,$chapter_id);
+        //validate if chapter is null
+        if (is_null($chapter)) {
+            $chapter = getFirstChapter($story);
+        }
 
-    	//Return a failure message if chapter not found
-    	if(is_null($chapter)) {
-    		return response()->json([
-    			'status' => 'failure',
-    			'msg' => "The chapter you're trying to delete does not exist."
-			]);
-    	}
+        //Return a failure message if chapter not found
+        if(is_null($chapter)) {
+            return response()->json([
+                'status' => 'failure',
+                'msg' => "The chapter you're trying to delete does not exist."
+            ]);
+        }
 
-    	//test if the user is authorize to delete the chapter
-    	$this->authorize('delete', $chapter);
-
+        //authorize user to delete
+        $this->authorize('delete-chapter',$chapter);
 	
     	/*** RENUMBERING ***/
 

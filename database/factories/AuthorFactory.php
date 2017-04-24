@@ -11,10 +11,34 @@
 |
 */
 
+use Illuminate\Http\File;
+
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 $factory->define(App\Author::class, function (Faker\Generator $faker) {
+	//pen name
+	$first_name = $faker->firstName();
+	$last_name = $faker->optional()->lastName();
+	$name = "$first_name $last_name";
+
+	//the avatar
+	$avtr_width = 150; 
+	$avtr_height = 150;
+	$avtr_name = $faker->uuid;
+
+	//Avatars generated from Robohash.org
+	$url = "https://robohash.org/{$avtr_name}.png?size={$avtr_width}x{$avtr_height}?set=set2";
+	$temp_path = "storage/app/public/temp/{$avtr_name}.png";
+
+	set_time_limit(0); 
+	//download avatar in temp directory
+	$file = copy($url,$temp_path);
+	//copy the file with auto id using Storage class
+	$avatar = Storage::disk('public')->putFile('avatars/authors', new File($temp_path));
+	//delete temp image
+	unlink($temp_path);
+
     return [
-        'pen_name' => $faker->name($gender = null)
-        //'user_id' => App\User::all()->random()->id
+        'pen_name' => $name,
+        'avatar' => basename($avatar)
     ];
 });

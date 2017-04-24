@@ -3,9 +3,22 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Story extends Model
 {
+    //cover image dimensions
+    private static $cover_dimensions = [
+        'min_width' => 200,
+        'max_width' => 400,
+        'min_height' => 200,
+        'max_height' => 500
+    ];
+
+    public static function coverDimensions() {
+        return self::$cover_dimensions;
+    }
+
     // 
     public function author() {
     	return $this->belongsTo('App\Author');
@@ -33,5 +46,9 @@ class Story extends Model
             }
         }
         return $count;
+    }
+
+    public function getCover() {
+        return asset(Storage::url("covers/$this->cover_filename"));
     }
 }

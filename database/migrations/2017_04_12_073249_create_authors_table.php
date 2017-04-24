@@ -16,6 +16,7 @@ class CreateAuthorsTable extends Migration
         Schema::create('authors', function (Blueprint $table) {
             $table->mediumIncrements('id');
             $table->string('pen_name')->default('Anonymous');
+            $table->string('avatar');
             $table->mediumInteger('user_id')->unsigned();
             $table->timestamps();
 

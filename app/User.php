@@ -25,7 +25,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'user_pword', 'remember_token',
     ];
 
     public function member() {
@@ -35,6 +35,11 @@ class User extends Authenticatable
     public function authors() {
         return $this->hasMany('App\Author');
     }
+
+    public function stories() {
+        return $this->hasManyThrough('App\Story','App\Author');
+    }
+    
     /***
         We need to rename getAuthPassword()
         ->user_pword to user_pword, the 

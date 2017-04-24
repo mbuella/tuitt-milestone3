@@ -17,16 +17,17 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-    	$this->user_count = 4;
-    	$this->auth_count = [1,1]; //range of author count
-    	$this->story_count = [1,2]; //range of story count
-    	$this->chapter_count = [4,5]; //range of chapter count
+    	$this->user_count = 5;
+    	$this->auth_count = [3,5]; //range of author count per user
+    	$this->story_count = [4,6]; //range of story count per author
+    	$this->chapter_count = [4,10]; //range of chapter count per story
 
     	//create faker factory
     	$faker = Faker\Factory::create();
 
     	//generate users
 		$users = factory(App\User::class, $this->user_count)->create();
+		dump('Users generated to database.');
 
 		//generate members
 		$members = $users->each(function($u){
@@ -34,6 +35,8 @@ class DatabaseSeeder extends Seeder
 				factory(App\Member::class)->make()
 			);
 		});
+		
+		dump('Members generated to database.');
 
     	// generate authors
     	$authors = $users->each(function($u){
@@ -44,6 +47,8 @@ class DatabaseSeeder extends Seeder
 				)->make()
 			);
 
+			dump('Authors generated to database.');
+
 	    	$authors->each(function($v){
 
 		    	// generate stories
@@ -53,6 +58,7 @@ class DatabaseSeeder extends Seeder
 						rand($this->story_count[0],$this->story_count[1])
 					)->make()
 				);
+				dump('Stories generated to database.');
 				
 				//generate chapters
 				$stories->each(function($v){
@@ -63,7 +69,8 @@ class DatabaseSeeder extends Seeder
 							App\Chapter::class,
 							rand($this->chapter_count[0],$this->chapter_count[1])
 						)->make()
-					);						
+					);	
+					dump('Chapters generated to database.');					
 				});
 
 			});

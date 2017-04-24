@@ -5,7 +5,7 @@
 	</a>
 	<ul class="dropdown-menu signin-form">
 		<li class="text-center">
-			<img src="{{ asset('assets/images/avatar.png') }}">
+			<img src="{{ Auth::user()->member->getAvatar() }}">
 			<h4>{{ $fullname }}</h4>
 		</li>
 		<li role="separator" class="divider"></li> 

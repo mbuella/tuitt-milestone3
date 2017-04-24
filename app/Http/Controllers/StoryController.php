@@ -58,7 +58,7 @@ class StoryController extends Controller
 		    	$curr_chapter = $chapters->find($chapter);
 
 	    	//owner view doesn't need to be recorded
-			if (!Auth::check() || !Auth::user()->can('update', $curr_chapter)) {
+			if (!Auth::check() || !Auth::user()->can('update-chapter', $curr_chapter)) {
 		    	//fire chapter read listener
 				event(new ChapterViewed($curr_chapter));
 			}

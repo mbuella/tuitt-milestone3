@@ -22,9 +22,12 @@ class Chapter extends Model
     	->withPivot('hearted', 'bookmarked')
     	->withTimestamps();
     }
+    
     public function story() {
     	return $this->belongsTo('App\Story');
     }
+
+
     public function getUrl() {
         $story = $this->story;
     	$chapter = $this->id;
@@ -35,6 +38,7 @@ class Chapter extends Model
         	]
     	);
     }
+
     public function getPrevChapUrl() {
     	//get previous sort_id
     	$prev_sort_id = $this->sort_id - 1;
@@ -46,6 +50,7 @@ class Chapter extends Model
     	                  ->first()
     	                  ->getUrl();
     }
+
     public function getNextChapUrl() {    	
     	//get next sort_id
     	$next_sort_id = $this->sort_id + 1;

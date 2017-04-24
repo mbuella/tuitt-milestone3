@@ -12,32 +12,46 @@
 */
 
 use Illuminate\Http\File;
+use App\Story;
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 $factory->define(App\Story::class, function (Faker\Generator $faker) {
-	//pre-process titles and slugs
+	//title and slug
 	$title = ucwords($faker->words(
 		$nbWords = $faker->numberBetween(1,5),
 		$variableNbWords = true,
 		$asText = true
 	));
 	$title_slug = str_slug($title);
+
+	//cover image
+	$dimensions = Story::coverDimensions();
+	$img_width = $faker->numberBetween(
+			$dimensions['min_width'],
+			$dimensions['max_width']
+		);
+	$ratio = $dimensions['min_width']/$faker->numberBetween(
+			$dimensions['min_width'],
+			$dimensions['max_width']
+		);
 	$cover = $faker->image(
 		$dir = 'storage\app\public\covers',
-		$width = 300,
-		$height = $faker->numberBetween(300,500),
+		$width = $img_width,
+		$height = round($img_width / $ratio),
 		'nature',
 		false,
 		true,
 		rawurlencode($title) //add title to image for mocking it
 	);
+
+	//publication date
 	$pub_date = $faker->dateTime(
         	$max = 'now',
         	$timezone = date_default_timezone_get()
     	 )->format('Y-m-d H:i:s');
-	$intro = $faker->paragraphs($nb = 2, $asText = true);
 
-	//dd($pub_date->format('Y-m-d H:i:s'));
+	//story intro
+	$intro = $faker->paragraphs($nb = 2, $asText = true);
 
     return [
         'title' => $title,
@@ -45,8 +59,6 @@ $factory->define(App\Story::class, function (Faker\Generator $faker) {
         'intro' => $intro,
         'pub_date' => $pub_date,
         'cover_filename' => $cover,
-
         'genre_id' => App\Genre::all()->random()->id
-        //'author_id' => App\Author::all()->random()->id
     ];
 });

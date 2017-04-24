@@ -19,7 +19,7 @@
 					<small> ni {{ $story->author->pen_name }} </small>
 				</div>
 				<div class="list-group chapter-list">
-					@can('update',$curr_chapter)
+					@can('update-chapter',$curr_chapter)
 					<button class="list-group-item list-group-item-info"
 							style="text-align: center !important;">
 						<i class="fa fa-bars"></i>
@@ -49,7 +49,7 @@
 					<div class="story-top" data-spy="affix" data-offset-top="75">
 						<!-- $chap_nav_btn  -->
 						@if(Auth::check())
-							@can('update', $curr_chapter)
+							@can('update-chapter', $curr_chapter)
 
 							<div id="writer-tools">
 								<button
@@ -58,7 +58,7 @@
 									data-toggle="modal"
 									data-target="#chapModal">
 									<i class="fa fa-plus"></i>
-									<span>Insert chapter</span>
+									<span>Insert<span class="hidden-xs"> chapter</span></span>
 								</button>			
 								<button
 									class="btn btn-info"
@@ -66,11 +66,11 @@
 									data-toggle="modal"
 									data-target="#chapModal">
 									<i class="fa fa-edit"></i>
-									<span>Edit chapter</span>
+									<span>Edit<span class="hidden-xs"> chapter</span></span>
 								</button>			
 								<button class="btn btn-danger" id="delete-chapter-btn">
 									<i class="fa fa-trash"></i>
-									<span>Delete chapter</span>
+									<span>Delete<span class="hidden-xs"> chapter</span></span>
 								</button>				
 							</div>
 
@@ -192,7 +192,7 @@
 	</div>
 </main>
 
-@can('update', $curr_chapter)
+@can('update-chapter', $curr_chapter)
 <div class="screen">
 	
 </div>
