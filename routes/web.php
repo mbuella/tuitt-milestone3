@@ -48,6 +48,15 @@ Route::get('/story/{story_slug}/chapter/{chapter}',
 	'StoryController@index'
 );
 
+/** Story update **/
+
+Route::post('/story/{story_slug}/update_modal',
+	'StoryController@storyUpdateModal'
+);
+
+Route::post('/story/{story}/update',
+	'StoryController@storyUpdate'
+);
 
 /*** Chapter Routes ***/
 

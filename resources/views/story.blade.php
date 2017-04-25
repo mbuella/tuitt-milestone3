@@ -221,5 +221,6 @@
 		</div>
 	</div>
 </div>
+
 @endcan
 @endsection

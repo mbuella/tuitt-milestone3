@@ -7,8 +7,11 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Story;
+use App\Genre;
 use App\Events\ChapterViewed;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\UploadedFile;
 
 class StoryController extends Controller
 {
@@ -118,4 +121,46 @@ class StoryController extends Controller
 				'genre_stories'
 			));
 	}
+
+    public function storyUpdateModal($story_slug) {
+        //get story from slug
+        $story = Story::getStoryFromSlug($story_slug);
+        $genres = Genre::all();
+        $authors = $story->author->user->authors;
+
+        $modal_title = 'Edit Story';
+        $post_url = action('StoryController@storyUpdate', [
+        	'story' => $story
+    	]);
+
+        return view('story.modal',
+            compact(
+            	'story','modal_title','post_url',
+            	'genres','authors'
+            )
+        );
+    }
+
+    public function storyUpdate(Story $story,Request $request) {
+    	$updated_story = $request->story;
+
+    	/* COVER IMAGE */
+    	//if cover image is null
+    	if($request->hasFile('story')) {
+    		//delete the old image
+    		Storage::disk('public')->delete("covers/{$story->cover_filename}");
+    		//save the new image to the disk
+    		//and replace cover_filename with the new filename
+    		$updated_story['cover_filename'] =
+    			basename(
+	    			$request->story['cover_filename']
+	    					->store('covers','public')
+				);
+    	}
+
+    	//save the updates
+    	$story->update($updated_story);
+
+    	return redirect('/home#trending-stories');
+    }
 }

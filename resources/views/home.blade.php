@@ -20,7 +20,7 @@
             </div>
         </div>
     </div>
-    <div class="row bookmarked-stories">        
+    <div class="row" id='bookmarked-stories'>        
         <div class="col-md-12">
             <h2 class="text-center">My Bookmarked Stories</h2>
             <div class="panel">
@@ -30,7 +30,7 @@
             </div>
         </div>
     </div>
-    <div class="row fav-stories">        
+    <div class="row" id=" fav-stories">        
         <div class="col-md-12">
             <h2 class="text-center">My Favorite Stories</h2>
             <div class="panel">
@@ -40,7 +40,7 @@
             </div>
         </div>
     </div>
-    <div class="row my-stories">        
+    <div class="row" id="trending-stories">        
         <div class="col-md-12">
             <h2 class="text-center">My Trending Stories</h2>
         </div>
@@ -64,7 +64,7 @@
             @endif
         </div>
     </div>
-    <div class="row authors">        
+    <div class="row" id="my-authors">        
         <div class="col-md-12">
             <h2 class="text-center">My Authors</h2>
             @foreach($authors as $author)
@@ -91,5 +91,33 @@
     @push('scripts-footer')
         <script src="{{ asset('assets/js/lib/salvattore.js') }}"></script>
     @endpush
+    @push('scripts-footer')
+        <script src="{{ asset('assets/js/story-modal.js') }}"></script>
+    @endpush
+</div>
+
+<div class="modal fade" id="storyModal" role="dialog">
+    <div class="modal-dialog modal-lg">     
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    <i class="fa fa-times"></i>
+                </button>
+                <h3>Please wait while we load the form...</h3>
+            </div>
+            <div class="modal-body">
+                <div class="loader">
+                    <div class="progress loader hidden-xs">
+                      <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                        <span class="sr-only">Loading</span>
+                      </div>
+                    </div>                      
+                    <div class="visible-xs text-center">
+                        <span class="fa fa-spinner fa-spin fa-5x"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 @endsection

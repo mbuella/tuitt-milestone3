@@ -1,14 +1,16 @@
 <div class="story">
 	@if (Auth::check() && Auth::user()->can('update-story', $story))
-		<button class="btn btn-info prevw-btn story-edit-btn hide">Edit Story</button>
+		<button class="btn btn-info prevw-btn story-edit-btn hide"
+			data-toggle="modal"
+			data-target="#storyModal">Edit Story</button>
 	@else
+		<button class="btn btn-info prevw-btn hide" style="left: 0">
+			<i class="fa fa-bookmark-o"></i>		
+		</button>
 		<button class="btn btn-info prevw-btn hide">Sneek Peek</button>
 	@endif
 	@if(Auth::check())
 
-	<button class="btn btn-info prevw-btn hide" style="left: 0">
-		<i class="fa fa-bookmark-o"></i>		
-	</button>
 
 	@endif
 	<a href='{{ url("/story/$story->id-$story->title_slug") }}'>

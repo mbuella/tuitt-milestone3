@@ -7,6 +7,16 @@ use Illuminate\Support\Facades\Storage;
 
 class Story extends Model
 {
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'title', 'title_slug', 'intro',
+        'cover_filename', 'genre_id', 'author_id'
+    ];
+
     //cover image dimensions
     private static $cover_dimensions = [
         'min_width' => 200,
@@ -17,6 +27,11 @@ class Story extends Model
 
     public static function coverDimensions() {
         return self::$cover_dimensions;
+    }
+
+    public static function getStoryFromSlug($story_slug) {
+        $story_id = strtok($story_slug, '-');
+        return self::find($story_id);
     }
 
     // 

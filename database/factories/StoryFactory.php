@@ -13,6 +13,7 @@
 
 use Illuminate\Http\File;
 use App\Story;
+use Illuminate\Support\Facades\Storage;
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 $factory->define(App\Story::class, function (Faker\Generator $faker) {

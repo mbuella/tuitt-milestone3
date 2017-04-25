@@ -12,6 +12,10 @@ class Author extends Model
     	return $this->hasMany('App\Story');
     }
 
+    public function user() {
+    	return $this->belongsTo('App\User');
+    }
+
     public function getAvatar() {
     	return Storage::url("avatars/authors/$this->avatar");
     }
