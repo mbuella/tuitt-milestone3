@@ -36,16 +36,45 @@ class ChapterController extends Controller
     	//get story
     	$story = $this->getStory($story_slug);
 
-        //validate if chapter is null
+/*        //validate if chapter is null
         if (is_null($chapter->id)) {
-            $chapter = $this->getFirstChapter($story);
+        	//check if the story has any chapters
+        	if($story->chapters->count() > 0) {
+	            $chapter = $this->getFirstChapter($story);
+	            $post_url = $chapter->getUrl();
+        	}
+        	else {
+        		//create a temporary chapter
+        		$chapter = new Chapter();
+		    	$post_url = $story->getUrl();        		
+        	}
         }
+        else {
+
+		        dd($chapter->id);
+        }*/
+
+    	//check if the story has any chapters
+    	if($story->chapters->count() > 0) {
+	        //validate if chapter is null
+	        if (is_null($chapter->id)) {
+	            $chapter = $this->getFirstChapter($story);
+	        }
+            $post_url = $chapter->getUrl();
+    	} else {
+    		//create a temporary chapter
+    		$chapter = new Chapter();
+	    	$post_url = $story->getUrl();        		
+	        $chapter->id = 0;
+	        $chapter->story_id = $story->id;
+    	}
+
 
         //authorize user to create chapter
         $this->authorize('create-chapter',$story);
 
     	$modal_title = 'Create New Chapter';
-    	$post_url = $chapter->getUrl() . '/insert';
+    	$post_url .= '/insert';
 
     	return view('chapter.modal',
     		compact('modal_title','post_url')
@@ -128,9 +157,10 @@ class ChapterController extends Controller
     	/*** PRE DELETE ***/
 
         //validate if chapter is null
-        if (is_null($chapter)) {
-            $chapter = getFirstChapter($story);
+        if (is_null($chapter->id)) {
+            $chapter = $this->getFirstChapter($story);
         }
+
 
         //Return a failure message if chapter not found
         if(is_null($chapter)) {

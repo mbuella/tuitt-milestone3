@@ -23,7 +23,8 @@ class CreateChaptersTable extends Migration
             $table->timestamps();
 
             //set foreign key
-            $table->foreign('story_id')->references('id')->on('stories');
+            $table->foreign('story_id')->references('id')->on('stories')
+                  ->onDelete('cascade');
         });
     }
 

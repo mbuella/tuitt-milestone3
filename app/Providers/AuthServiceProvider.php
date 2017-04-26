@@ -45,6 +45,10 @@ class AuthServiceProvider extends ServiceProvider
 
         /*** Chapter ***/
 
+        Gate::define('view-chapter', function ($user) {
+            return true;
+        });
+
         Gate::define('create-chapter', function ($user, $story) {
             return $user->id == $story->author->user_id;
         });

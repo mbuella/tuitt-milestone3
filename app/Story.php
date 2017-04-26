@@ -34,6 +34,10 @@ class Story extends Model
         return self::find($story_id);
     }
 
+    public function getUrl() {
+        return url("story/$this->id");
+    }
+
     // 
     public function author() {
     	return $this->belongsTo('App\Author');

@@ -19,13 +19,15 @@
 					<small> ni {{ $story->author->pen_name }} </small>
 				</div>
 				<div class="list-group chapter-list">
-					@can('update-chapter',$curr_chapter)
-					<button class="list-group-item list-group-item-info"
-							style="text-align: center !important;">
-						<i class="fa fa-bars"></i>
-						Order chapters						
-					</button>
-					@endcan
+					@isset($curr_chapter)
+						@can('update-chapter',$curr_chapter)
+						<button class="list-group-item list-group-item-info"
+								style="text-align: center !important;">
+							<i class="fa fa-bars"></i>
+							Order chapters						
+						</button>
+						@endcan
+					@endisset
 					@foreach($chapters as $chapter)
 						@if($curr_chapter->id == $chapter->id)
 							{{ HTML::tag('span',"$chapter->title 
@@ -49,8 +51,7 @@
 					<div class="story-top" data-spy="affix" data-offset-top="75">
 						<!-- $chap_nav_btn  -->
 						@if(Auth::check())
-							@can('update-chapter', $curr_chapter)
-
+							@can('create-chapter', $story)
 							<div id="writer-tools">
 								<button
 									class="btn btn-success"
@@ -59,40 +60,41 @@
 									data-target="#chapModal">
 									<i class="fa fa-plus"></i>
 									<span>Insert<span class="hidden-xs"> chapter</span></span>
-								</button>			
-								<button
-									class="btn btn-info"
-									id="edit-chapter-btn"
-									data-toggle="modal"
-									data-target="#chapModal">
-									<i class="fa fa-edit"></i>
-									<span>Edit<span class="hidden-xs"> chapter</span></span>
-								</button>			
-								<button class="btn btn-danger" id="delete-chapter-btn">
-									<i class="fa fa-trash"></i>
-									<span>Delete<span class="hidden-xs"> chapter</span></span>
-								</button>				
+								</button>	
+								@if($chapters->count() > 0)
+									@can('update-chapter', $curr_chapter)
+										<button
+											class="btn btn-info"
+											id="edit-chapter-btn"
+											data-toggle="modal"
+											data-target="#chapModal">
+											<i class="fa fa-edit"></i>
+											<span>Edit<span class="hidden-xs"> chapter</span></span>
+										</button>			
+									@endcan
+									@can('delete-chapter', $curr_chapter)
+										<button class="btn btn-danger" id="delete-chapter-btn">
+											<i class="fa fa-trash"></i>
+											<span>Delete<span class="hidden-xs"> chapter</span></span>
+										</button>				
+									@endcan
+								@endif
 							</div>
-
 							@else
-
-							<span class="react-icons">
-								<button class="btn btn-info">
-									<i class="fa fa-bookmark-o"></i>
-								</button>				
-								<button class="btn btn-info">
-									<i class="fa fa-heart-o"></i>
-								</button>						
-							</span>
-
+								<span class="react-icons">
+									<button class="btn btn-info">
+										<i class="fa fa-bookmark-o"></i>
+									</button>				
+									<button class="btn btn-info">
+										<i class="fa fa-heart-o"></i>
+									</button>						
+								</span>
 							@endcan
 						@else	
-
 							<a href="/login" class="btn btn-info" id="signin-btn">
 								<i class="fa fa-user"></i>
 								<span>Signin to like this chapter.</span>
-							</a>			
-
+							</a>
 						@endif
 						<div class="clearfix"></div>				
 					</div>
@@ -192,7 +194,7 @@
 	</div>
 </main>
 
-@can('update-chapter', $curr_chapter)
+@can('create-chapter', $story)
 <div class="screen">
 	
 </div>

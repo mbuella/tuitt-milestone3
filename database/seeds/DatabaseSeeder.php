@@ -17,9 +17,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-    	$this->user_count = 5;
-    	$this->auth_count = [3,5]; //range of author count per user
-    	$this->story_count = [4,6]; //range of story count per author
+    	$this->user_count = 3;
+    	$this->auth_count = [2,3]; //range of author count per user
+    	$this->story_count = [1,2]; //range of story count per author
     	$this->chapter_count = [4,10]; //range of chapter count per story
 
     	//create faker factory

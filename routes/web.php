@@ -30,22 +30,15 @@ Route::get('/about',function(){
 
 
 /*** Stories Routes ***/
-Route::get('/stories/',
-	'StoriesController@index'
+
+/** Story insert **/
+
+Route::post('/story/add_modal',
+	'StoryController@storyAddModal'
 );
 
-Route::get('/stories/{genre_name}',
-	'StoriesController@getStories'
-);
-
-
-/*** Story Page Routes ***/
-Route::get('/story/{story_slug}/',
-	'StoryController@index'
-);
-
-Route::get('/story/{story_slug}/chapter/{chapter}',
-	'StoryController@index'
+Route::post('/story/add',
+	'StoryController@storyAdd'
 );
 
 /** Story update **/
@@ -58,6 +51,31 @@ Route::post('/story/{story}/update',
 	'StoryController@storyUpdate'
 );
 
+/** Story delete **/
+
+Route::post('/story/{story}/delete_story',
+	'StoryController@storyDelete'
+);
+
+/*** Story display ***/
+Route::get('/stories/',
+	'StoriesController@index'
+);
+
+Route::get('/stories/{genre_name}',
+	'StoriesController@getStories'
+);
+
+/*** Story Page Routes ***/
+Route::get('/story/{story_slug}/',
+	'StoryController@index'
+);
+
+Route::get('/story/{story_slug}/chapter/{chapter}',
+	'StoryController@index'
+);
+
+
 /*** Chapter Routes ***/
 
 /** Chapter insert **/
@@ -68,6 +86,11 @@ Route::post('/story/{story_slug}/add',
 
 Route::post('/story/{story_slug}/chapter/{chapter}/add',
 	'ChapterController@chapterAddModal'
+);
+
+//this route will process chapter for an empty story effectively
+Route::post('/story/{story_slug}/insert',
+	'ChapterController@insertChapter'
 );
 
 Route::post('/story/{story_slug}/chapter/{chapter}/insert',

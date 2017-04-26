@@ -43,6 +43,15 @@
     <div class="row" id="trending-stories">        
         <div class="col-md-12">
             <h2 class="text-center">My Trending Stories</h2>
+            <div class="pull-right">
+                <button class="btn btn-info"
+                    id="story-add-btn"
+                    data-toggle="modal"
+                    data-target="#storyModal">
+                        <i class="fa fa-plus"></i>
+                        Add a new story
+                </button>
+            </div>
         </div>
         <div class="grid" data-columns> 
             @foreach($allStories->take(7) as $story)

@@ -4,14 +4,20 @@
         <h3 class="modal-title">{{ $modal_title }}</h3>
     </div>
     <div class="modal-body">
-        <form method="POST" action="{{ $post_url }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ $post_url }}"
+              enctype="multipart/form-data">
             {{ csrf_field() }}
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="story-cover">Story cover</label>
-                    {{ Form::file('story[cover_filename]',[
-                        'id' => "story-cover"
-                    ]) }}
+                    <input type="file"
+                           name="story[cover_filename]"
+                           id="story-cover"
+                           @isset($story)
+                           @else
+                                required
+                           @endisset
+                           >
                 </div>
             </div>
             <div class="col-md-6">
@@ -40,9 +46,11 @@
                             class="form-control">
                         @foreach($genres as $genre)
                             <option value="{{ $genre->id }}"
-                                @if($genre->id == $story->genre_id)
-                                    selected
-                                @endif
+                                @isset($story)
+                                    @if($genre->id == $story->genre_id)
+                                        selected
+                                    @endif
+                                @endisset
                             >
                                 {{ ucwords($genre->genre_name) }}
                             </option>
@@ -64,9 +72,11 @@
                             class="form-control">
                         @foreach($authors as $author)
                             <option value="{{ $author->id }}"
-                                @if($author->id == $story->author_id)
-                                    selected
-                                @endif
+                                @isset($story)
+                                    @if($author->id == $story->author_id)
+                                        selected
+                                    @endif
+                                @endisset
                             >
                                 {{ ucwords($author->pen_name) }}
                             </option>
@@ -74,11 +84,13 @@
                     </select>
                 </div>                        
             </div>
+            @isset($story)
             <button type="button"
                 name = "story[delete]"
                 id = "story-delete"
                 class="btn btn-danger pull-left">
                 Delete Story</button>
+            @endisset
             <button type="submit"
                 name = "story[submit]"
                 id = "story-submit"

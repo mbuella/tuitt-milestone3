@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Story;
 use App\Genre;
+use App\Author;
 use App\Events\ChapterViewed;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -34,7 +35,7 @@ class StoryController extends Controller
 
     public function index($story_slug, $chapter = null) {
     	//set max length of each paragraph
-    	$this->text_length = 500;
+    	$this->text_length = 800;
     	//no chapter title
     	$chap_title = "No chapter here";
 
@@ -122,6 +123,22 @@ class StoryController extends Controller
 			));
 	}
 
+    public function storyAddModal() {    	
+        $genres = Genre::all();
+        $authors = Author::where('user_id',Auth::id())->get();
+
+
+        $modal_title = 'Add New Story';
+        $post_url = action('StoryController@storyAdd');
+
+        return view('story.modal',
+            compact(
+            	'modal_title','post_url',
+            	'genres','authors'
+            )
+        );
+    }
+
     public function storyUpdateModal($story_slug) {
         //get story from slug
         $story = Story::getStoryFromSlug($story_slug);
@@ -139,6 +156,25 @@ class StoryController extends Controller
             	'genres','authors'
             )
         );
+    }
+
+    public function storyAdd(Request $request) {
+    	//create new instance of story
+    	$story = new Story($request['story']);
+
+		//save the new image to the disk
+		//and replace cover_filename with the new filename
+		$story->cover_filename =
+			basename(
+    			$request->story['cover_filename']
+    					->store('covers','public')
+			);
+
+    	//save story
+    	$add = $story->save();
+
+    	//redirect to the new story
+    	return redirect($story->getUrl());
     }
 
     public function storyUpdate(Story $story,Request $request) {
@@ -162,5 +198,32 @@ class StoryController extends Controller
     	$story->update($updated_story);
 
     	return redirect('/home#trending-stories');
+    }
+
+    public function storyDelete(Story $story) {
+		/*** DELETION ***/
+
+		//delete story cover
+		Storage::disk('public')->delete("covers/{$story->cover_filename}");
+
+    	//delete story
+    	$delete = $story->delete();
+
+    	/*** RESPONSE TO CLIENT ***/
+
+    	if($delete) {
+	    	$response = [
+			    'status' => 'success',
+			    'story_id' => $story->id
+			];
+    	}
+    	else {
+    		$response = [
+			    'status' => 'failure',
+			    'msg' => 'An error has occured, the story was not deleted.'
+			];	
+    	}
+
+    	return response()->json($response);
     }
 }
