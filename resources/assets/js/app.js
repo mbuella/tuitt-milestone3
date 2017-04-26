@@ -10,8 +10,12 @@ $(document).ready(function() {
 
 	$(".story").hover(
 		function(e){
-			$(this).children(".prevw-btn").toggleClass("hide");
-			$(this).children("a:first").children("div").toggleClass("hide");
+			$(this).children(".prevw-btn").removeClass("hidden-md");
+			$(this).children("a:first").children("div").removeClass("hidden-md");
+		},
+		function(e){
+			$(this).children(".prevw-btn").addClass("hidden-md");
+			$(this).children("a:first").children("div").addClass("hidden-md");
 		}
 	);
 

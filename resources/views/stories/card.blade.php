@@ -1,13 +1,13 @@
 <div class="story">
 	@if (Auth::check() && Auth::user()->can('update-story', $story))
-		<button class="btn btn-info prevw-btn story-edit-btn hide"
+		<button class="btn btn-info prevw-btn story-edit-btn hidden-md"
 			data-toggle="modal"
 			data-target="#storyModal">Edit Story</button>
 	@else
-		<button class="btn btn-info prevw-btn hide" style="left: 0">
+		<button class="btn btn-info prevw-btn hidden-md" style="left: 0">
 			<i class="fa fa-bookmark-o"></i>		
 		</button>
-		<button class="btn btn-info prevw-btn hide">Sneek Peek</button>
+		<button class="btn btn-info prevw-btn hidden-md">Sneek Peek</button>
 	@endif
 	@if(Auth::check())
 
@@ -17,7 +17,7 @@
 		<img class="img-responsive img-thumbnail"
 			 src='{{ $story->getCover() }}'
 		 	 alt="{{ $story->title }}">
-		<div class="panel hide">
+		<div class="panel hidden-md">
 			<h4>
 				<strong> {{ $story->title }} </strong>
 			</h4>

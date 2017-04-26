@@ -36,24 +36,6 @@ class ChapterController extends Controller
     	//get story
     	$story = $this->getStory($story_slug);
 
-/*        //validate if chapter is null
-        if (is_null($chapter->id)) {
-        	//check if the story has any chapters
-        	if($story->chapters->count() > 0) {
-	            $chapter = $this->getFirstChapter($story);
-	            $post_url = $chapter->getUrl();
-        	}
-        	else {
-        		//create a temporary chapter
-        		$chapter = new Chapter();
-		    	$post_url = $story->getUrl();        		
-        	}
-        }
-        else {
-
-		        dd($chapter->id);
-        }*/
-
     	//check if the story has any chapters
     	if($story->chapters->count() > 0) {
 	        //validate if chapter is null
@@ -119,7 +101,7 @@ class ChapterController extends Controller
         $story = $this->getStory($story_slug);
 
         //validate if chapter is null
-        if (is_null($chapter)) {
+        if (is_null($chapter->id)) {
             $chapter = getFirstChapter($story);
         }
 

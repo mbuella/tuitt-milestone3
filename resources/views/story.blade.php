@@ -5,47 +5,7 @@
 @section('content')
 <main class="container" id="story">
 	<div class="row">
-		<div class="col-md-3">
-			<div class="panel">
-				<div class="panel story-cover text-center">
-					<div class="panel-heading">
-						<!-- story cover -->
-						<img src="{{ $story_cover }}" 
-							 class="img-thumbnail img-responsive">				
-					</div>
-					<h4>
-						<strong> {{ $story->title }} </strong>
-					</h4>
-					<small> ni {{ $story->author->pen_name }} </small>
-				</div>
-				<div class="list-group chapter-list">
-					@isset($curr_chapter)
-						@can('update-chapter',$curr_chapter)
-						<button class="list-group-item list-group-item-info"
-								style="text-align: center !important;">
-							<i class="fa fa-bars"></i>
-							Order chapters						
-						</button>
-						@endcan
-					@endisset
-					@foreach($chapters as $chapter)
-						@if($curr_chapter->id == $chapter->id)
-							{{ HTML::tag('span',"$chapter->title 
-
-							",[
-								'class' => 'list-group-item active'
-							]) }}
-						@else
-							{{ HTML::tag('a',$chapter->title,[
-								'href' => $chapter->getUrl(),
-								'class' => 'list-group-item'
-							]) }}
-						@endif
-					@endforeach
-				</div>
-			</div>
-		</div>
-		<div class="col-md-7 story-body">
+		<div class="col-md-7 col-sm-9 col-sm-push-3 story-body">
 			<div class="panel">
 				<div class="panel-heading">
 					<div class="story-top" data-spy="affix" data-offset-top="75">
@@ -59,7 +19,7 @@
 									data-toggle="modal"
 									data-target="#chapModal">
 									<i class="fa fa-plus"></i>
-									<span>Insert<span class="hidden-xs"> chapter</span></span>
+									<span class="hidden-xs">Insert chapter</span>
 								</button>	
 								@if($chapters->count() > 0)
 									@can('update-chapter', $curr_chapter)
@@ -69,13 +29,13 @@
 											data-toggle="modal"
 											data-target="#chapModal">
 											<i class="fa fa-edit"></i>
-											<span>Edit<span class="hidden-xs"> chapter</span></span>
+											<span class="hidden-xs">Edit chapter</span>
 										</button>			
 									@endcan
 									@can('delete-chapter', $curr_chapter)
 										<button class="btn btn-danger" id="delete-chapter-btn">
 											<i class="fa fa-trash"></i>
-											<span>Delete<span class="hidden-xs"> chapter</span></span>
+											<span class="hidden-xs">Delete chapter</span>
 										</button>				
 									@endcan
 								@endif
@@ -159,7 +119,47 @@
 				@endisset
 			</div>
 		</div>
-		<div class="col-md-2 story-recom">
+		<div class="col-md-3 col-sm-3 col-md-pull-7 col-sm-pull-9">
+			<div class="panel">
+				<div class="panel story-cover text-center">
+					<div class="panel-heading">
+						<!-- story cover -->
+						<img src="{{ $story_cover }}" 
+							 class="img-thumbnail img-responsive">				
+					</div>
+					<h4>
+						<strong> {{ $story->title }} </strong>
+					</h4>
+					<small> ni {{ $story->author->pen_name }} </small>
+				</div>
+				<div class="list-group chapter-list">
+					@isset($curr_chapter)
+						@can('update-chapter',$curr_chapter)
+						<button class="list-group-item list-group-item-info"
+								style="text-align: center !important;">
+							<i class="fa fa-bars"></i>
+							Order chapters						
+						</button>
+						@endcan
+					@endisset
+					@foreach($chapters as $chapter)
+						@if($curr_chapter->id == $chapter->id)
+							{{ HTML::tag('span',"$chapter->title 
+
+							",[
+								'class' => 'list-group-item active'
+							]) }}
+						@else
+							{{ HTML::tag('a',$chapter->title,[
+								'href' => $chapter->getUrl(),
+								'class' => 'list-group-item'
+							]) }}
+						@endif
+					@endforeach
+				</div>
+			</div>
+		</div>
+		<div class="col-md-2 col-sm-12 story-recom">
 			<div class="panel text-center">
 				<div class="panel-heading">
 					<h4> Other Stories by {{ $story->author->pen_name }} </h4>

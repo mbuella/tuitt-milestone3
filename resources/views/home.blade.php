@@ -9,11 +9,11 @@
         <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <div class="col-md-6">
-                        <img src="{{ $member->getAvatar() }}">                        
+                    <div class="col-md-6 col-sm-6 col-xs-12" id="dbd-avatar">
+                        <img src="{{ $member->getAvatar() }}">
                     </div>
-                    <div class="col-md-6 text-right">
-                        <h1>Storyboard</h1>
+                    <div class="col-md-6 col-sm-6 col-xs-12" id="dbd-title">
+                        <h2>Storyboard</h2>
                     </div>
                     <div class="clearfix"></div>
                 </div>
@@ -43,17 +43,18 @@
     <div class="row" id="trending-stories">        
         <div class="col-md-12">
             <h2 class="text-center">My Trending Stories</h2>
-            <div class="pull-right">
-                <button class="btn btn-info"
+        </div>
+        <div class="grid" data-columns> 
+            <div class="story">
+                <a href="#" 
                     id="story-add-btn"
                     data-toggle="modal"
                     data-target="#storyModal">
-                        <i class="fa fa-plus"></i>
-                        Add a new story
-                </button>
-            </div>
-        </div>
-        <div class="grid" data-columns> 
+                    <img class="img-responsive img-thumbnail"
+                         src='{{ asset("assets/images/book-add.svg") }}'
+                         alt="More stories">
+                </a>
+            </div>  
             @foreach($allStories->take(7) as $story)
                 @include('stories.card')
             @endforeach
@@ -63,7 +64,7 @@
                     <img class="img-responsive img-thumbnail"
                          src='http://placehold.it/200x300?text={{$more_stories_count}}%2B'
                          alt="More stories">
-                    <div class="panel hide">
+                    <div class="panel hidden-md">
                         <h4>
                             <strong> Load more stories. </strong>
                         </h4>

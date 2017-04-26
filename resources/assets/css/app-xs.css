@@ -25,6 +25,18 @@
 	text-align: right;
 }
 
+/*** FOOTER ***/
+
+#social {
+    width: 150px;
+    margin: 0 auto;
+    padding-bottom: 20px;	
+}
+
+#copyright {
+	text-align: center;
+}
+
 .signin-form li {
 	width: inherit !important;
 	text-align: center;
@@ -32,6 +44,14 @@
 
 .search-form > input {
 	text-align: right;
+}
+
+#dbd-avatar img {
+	padding: 0 20px;
+}
+
+#dbd-title {
+	text-align: center;
 }
 
 }

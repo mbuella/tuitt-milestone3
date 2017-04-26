@@ -361,3 +361,20 @@ footer {
 .signup-form {
 	padding: 20px;
 }
+
+
+/**/
+#story-add-btn img {
+	background: gray;
+	padding: 50px;
+	height: 300px;
+
+}
+
+#dbd-avatar img {
+	border-radius: 50%;	
+}
+
+#dbd-title {
+	text-align: right;
+}
