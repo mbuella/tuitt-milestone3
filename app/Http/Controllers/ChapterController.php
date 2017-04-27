@@ -102,7 +102,7 @@ class ChapterController extends Controller
 
         //validate if chapter is null
         if (is_null($chapter->id)) {
-            $chapter = getFirstChapter($story);
+            $chapter = $this->getFirstChapter($story);
         }
 
         $modal_title = 'Edit Chapter';
@@ -118,8 +118,8 @@ class ChapterController extends Controller
     	$story = $this->getStory($story_slug);
 
         //validate if chapter is null
-        if (is_null($chapter)) {
-            $chapter = getFirstChapter($story);
+        if (is_null($chapter->id)) {
+            $chapter = $this->getFirstChapter($story);
         }
 
     	//update details from request

@@ -7,6 +7,10 @@ use Illuminate\Support\Facades\Storage;
 
 class Author extends Model
 {
+    protected $fillable = [
+        'pen_name', 'avatar', 'user_id'
+    ];
+
     //
     public function stories() {
     	return $this->hasMany('App\Story');

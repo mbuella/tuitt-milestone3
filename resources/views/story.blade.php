@@ -133,7 +133,7 @@
 					<small> ni {{ $story->author->pen_name }} </small>
 				</div>
 				<div class="list-group chapter-list">
-					@isset($curr_chapter)
+<!-- 					@isset($curr_chapter)
 						@can('update-chapter',$curr_chapter)
 						<button class="list-group-item list-group-item-info"
 								style="text-align: center !important;">
@@ -141,7 +141,7 @@
 							Order chapters						
 						</button>
 						@endcan
-					@endisset
+					@endisset -->
 					@foreach($chapters as $chapter)
 						@if($curr_chapter->id == $chapter->id)
 							{{ HTML::tag('span',"$chapter->title 

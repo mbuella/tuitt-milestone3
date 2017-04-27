@@ -14,7 +14,7 @@ class Member extends Model
      */
     protected $fillable = [
         'member_fname', 'member_lname', 'member_addr',
-        'member_dbirth', 'member_gender',
+        'member_dbirth', 'member_gender', 'avatar'
     ];
 
     public function getAvatar() {

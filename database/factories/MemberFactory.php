@@ -43,19 +43,7 @@ $factory->define(App\Member::class, function (Faker\Generator $faker) {
 	//set_time_limit(0); 
 	//download avatar in temp directory
 	// $file = copy($url,$temp_path);
-	$file = value(function() use($url,$temp_path) {
-        $fp = fopen($temp_path, 'w');
-        $ch = curl_init($url);
-        curl_setopt($ch, CURLOPT_FILE, $fp);
-        $success = curl_exec($ch);
-        dd($success);
-        curl_close($ch);
-        fclose($fp);
 
-	    return $temp_path;
-	});
-
-	dd('stop');
 	
 	//copy the file with auto id using Storage class
 	$avatar = Storage::disk('public')->putFile('avatars/members', new File($temp_path));
