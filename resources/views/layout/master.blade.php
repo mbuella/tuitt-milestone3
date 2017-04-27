@@ -20,9 +20,9 @@
 
 	<!-- App styles/scripts -->
 	<!-- CSS -->
-	{{ HTML::style('asset(assets/css/main.css')) }}
+	{{ HTML::style(asset('assets/css/main.css')) }}
 	<!-- JS -->
-	{{ HTML::script('asset(assets/js/main.js')) }}	
+	{{ HTML::script(asset('assets/js/main.js')) }}	
 
 </head>
 <body>
