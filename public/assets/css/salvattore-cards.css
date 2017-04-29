@@ -10,9 +10,17 @@
 	margin: 0 10px;
 }
 
-@media only screen and (max-width: 992px){}
+@media only screen and (max-width: 992px){
 
+	.grid[data-columns]::before {
+		content: '3 .column.size-1of3';
+	}
 
+	.size-1of3 {
+		width: 30%; 
+    	margin-left: 10px;
+	}
+}
 
 @media only screen and (max-width: 768px){
 

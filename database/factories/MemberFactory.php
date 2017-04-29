@@ -11,6 +11,9 @@
 |
 */
 
+use Illuminate\Http\File;
+
+
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 $factory->define(App\Member::class, function (Faker\Generator $faker) {
 
@@ -28,11 +31,40 @@ $factory->define(App\Member::class, function (Faker\Generator $faker) {
 		]
 	);
 
+	//the avatar
+	$avtr_width = 150; 
+	$avtr_height = 150;
+
+/*	$avtr_name = $faker->uuid;
+	//Avatars generated from Robohash.org
+	$url = "https://robohash.org/{$avtr_name}.png?size={$avtr_width}x{$avtr_height}";
+	$temp_path = "storage/app/public/temp/{$avtr_name}.png";
+
+	//set_time_limit(0); 
+	//download avatar in temp directory
+	// $file = copy($url,$temp_path);
+
+	
+	//copy the file with auto id using Storage class
+	$avatar = Storage::disk('public')->putFile('avatars/members', new File($temp_path));
+	//delete temp image
+	unlink($temp_path);*/
+
+	$avatar = $faker->image(
+		$dir = 'storage\app\public\avatars\members',
+		$width = $avtr_width,
+		$height = $avtr_height,
+		'people',
+		false,
+		true
+	);
+
     return [
         'member_fname' => $faker->firstName($gender = $gend['gender']),
         'member_lname' => $faker->lastName,
-        'member_addr' => $faker->address,
-        'member_dbirth' => $faker->date($format = 'Y-m-d', $max = 'now'),
-        'member_gender' => $gend['code']
+        'member_addr' => $faker->optional()->address,
+        'member_dbirth' => $faker->optional()->date($format = 'Y-m-d', $max = 'now'),
+        'member_gender' => $gend['code'],
+        'avatar' => $avatar
     ];
 });

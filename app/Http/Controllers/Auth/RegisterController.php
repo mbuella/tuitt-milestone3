@@ -4,9 +4,13 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use App\Member;
+use App\Author;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\File;
+use Storage;
+
 
 class RegisterController extends Controller
 {
@@ -71,15 +75,33 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return User
      */
+    private function generateAvatar($user_name,$type = 'members') {
+        //Avatars generated from Robohash.org
+        $url = "https://api.adorable.io/avatars/150/$user_name";
+        $temp_path = "storage/temp/{$user_name}.png";
+
+
+        set_time_limit(0); 
+        //download avatar in temp directory
+        $content = file_get_contents($url);
+        $store = Storage::disk('public')->put("temp/{$user_name}.png", $content);
+        if($store) {
+            //copy the file with auto id using Storage class
+            $avatar = Storage::disk('public')->putFile("avatars/$type", new File($temp_path));
+            //delete temp image
+            unlink($temp_path);    
+
+            return basename($avatar);
+        }
+        
+        dd("Image download Failed!");
+
+    }
+
     protected function create(array $data)
     {
-        $member = new Member([      
-            'member_fname' => $data['member_fname'], 
-            'member_lname' => $data['member_lname'], 
-            'member_addr' => $data['member_addr'], 
-            'member_dbirth' => $data['member_dbirth'], 
-            'member_gender' => $data['member_gender']
-        ]);
+        //generate a new avatar for the member
+        $avatar = $this->generateAvatar($data['user_name']);
 
         //add new user record
         $user = User::create([
@@ -88,11 +110,29 @@ class RegisterController extends Controller
             'user_pword' => bcrypt($data['user_pword']),
         ]);
 
+        $member = new Member([
+            'member_fname' => $data['member_fname'], 
+            'member_lname' => $data['member_lname'], 
+            'member_addr' => $data['member_addr'], 
+            'member_dbirth' => $data['member_dbirth'], 
+            'member_gender' => $data['member_gender'],
+            'avatar' => $avatar
+        ]);
+
+        $author_avatar = $this->generateAvatar($data['user_name'],'authors');
+
+        //this time, create a default author for the user
+        $author = new Author([
+            'pen_name' => $data['user_name'],
+            'avatar' => $author_avatar,
+            'user_pword' => bcrypt($data['user_pword']),
+        ]);
 
         //add member record
         $user->member()->save($member);
 
-        //dd($user);
+        //add author
+        $user->authors()->save($author);
 
         // IMPORTANT!!! Always return the User instance.
         return $user;

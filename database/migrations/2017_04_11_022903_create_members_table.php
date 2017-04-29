@@ -20,6 +20,7 @@ class CreateMembersTable extends Migration
             $table->string('member_addr')->nullable();
             $table->date('member_dbirth')->nullable();
             $table->char('member_gender',1)->nullable();
+            $table->string('avatar');
             $table->timestamps();
 
             //set primary key

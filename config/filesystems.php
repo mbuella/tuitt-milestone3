@@ -63,6 +63,20 @@ return [
             'bucket' => env('AWS_BUCKET'),
         ],
 
+        'ftp' => [
+            'driver'   => 'ftp',
+            'host'     => 'ftp.mbuella.heliohost.org',
+            'username' => 'mbuella',
+            'password' => 'lunny@heliohost17',
+
+            // Optional FTP Settings...
+            // 'port'     => 21,
+            // 'root'     => '',
+            // 'passive'  => true,
+            // 'ssl'      => true,
+            // 'timeout'  => 30,
+        ],
+
     ],
 
 ];

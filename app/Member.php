@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Member extends Model
 {
@@ -13,6 +14,10 @@ class Member extends Model
      */
     protected $fillable = [
         'member_fname', 'member_lname', 'member_addr',
-        'member_dbirth', 'member_gender',
+        'member_dbirth', 'member_gender', 'avatar'
     ];
+
+    public function getAvatar() {
+    	return asset(Storage::url("avatars/members/$this->avatar"));
+    }
 }

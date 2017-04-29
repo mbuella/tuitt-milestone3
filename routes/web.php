@@ -30,6 +30,34 @@ Route::get('/about',function(){
 
 
 /*** Stories Routes ***/
+
+/** Story insert **/
+
+Route::post('/story/add_modal',
+	'StoryController@storyAddModal'
+);
+
+Route::post('/story/add',
+	'StoryController@storyAdd'
+);
+
+/** Story update **/
+
+Route::post('/story/{story_slug}/update_modal',
+	'StoryController@storyUpdateModal'
+);
+
+Route::post('/story/{story}/update',
+	'StoryController@storyUpdate'
+);
+
+/** Story delete **/
+
+Route::post('/story/{story}/delete_story',
+	'StoryController@storyDelete'
+);
+
+/*** Story display ***/
 Route::get('/stories/',
 	'StoriesController@index'
 );
@@ -37,7 +65,6 @@ Route::get('/stories/',
 Route::get('/stories/{genre_name}',
 	'StoriesController@getStories'
 );
-
 
 /*** Story Page Routes ***/
 Route::get('/story/{story_slug}/',
@@ -48,12 +75,57 @@ Route::get('/story/{story_slug}/chapter/{chapter}',
 	'StoryController@index'
 );
 
+
 /*** Chapter Routes ***/
+
+/** Chapter insert **/
+
+Route::post('/story/{story_slug}/add',
+	'ChapterController@chapterAddModal'
+);
+
+Route::post('/story/{story_slug}/chapter/{chapter}/add',
+	'ChapterController@chapterAddModal'
+);
+
+//this route will process chapter for an empty story effectively
+Route::post('/story/{story_slug}/insert',
+	'ChapterController@insertChapter'
+);
+
+Route::post('/story/{story_slug}/chapter/{chapter}/insert',
+	'ChapterController@insertChapter'
+)->middleware('can:update-chapter,chapter');
+//we can use update-chapter since we already allowed the user to add
+//chapter
+
+/** Chapter update **/
+
+Route::post('/story/{story_slug}/edit',
+	'ChapterController@chapterEditModal'
+);
+
+Route::post('/story/{story_slug}/chapter/{chapter}/edit',
+	'ChapterController@chapterEditModal'
+);
+
+Route::post('/story/{story_slug}/chapter/{chapter}/save',
+	'ChapterController@saveChapter'
+)->middleware('can:update-chapter,chapter');
+
+/** Chapter delete **/
+
+Route::post('/story/{story_slug}/delete',
+	'ChapterController@delete'
+);
+
 Route::post('/story/{story_slug}/chapter/{chapter}/delete',
 	'ChapterController@delete'
 );
 
+
 /*** Authors Routes ***/
+
 Route::get('/authors',
 	'AuthorsController@index'
 );
@@ -62,5 +134,13 @@ Route::get('/authors',
 Auth::routes();
 
 
-/*** Member Dashboard ***/
+/*** Current Login Dashboard ***/
 Route::get('/home', 'HomeController@index');
+
+/*** Member Profile ***/
+# Route::get('/{user_name}', 'ProfileController@index');
+
+/*** Member authors page (by authors) ***/
+/*Route::get('/{user_name}/{story_slug}/chapter/{chapter_id}/delete',
+	'ChapterController@delete'
+);*/
