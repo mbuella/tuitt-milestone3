@@ -18,7 +18,6 @@ class CreateStoriesTable extends Migration
             $table->string('title');
             $table->string('title_slug');
             $table->mediumText('intro')->nullable();
-            $table->timestamp('pub_date');
             $table->string('cover_filename')->nullable();
             $table->integer('genre_id')->unsigned();
             $table->mediumInteger('author_id')->unsigned();

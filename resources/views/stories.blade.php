@@ -55,7 +55,7 @@
 					    <script src="{{ asset('assets/js/lib/salvattore.js') }}"></script>
 					@endpush
 				@endif
-			@empty($stories)
+			@empty
 				<h3 class="text-center">No stories for this genre.</h3>
 			@endforelse
 			<div class="clearfix"></div>
